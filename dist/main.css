@@ -1,0 +1,26 @@
+/*!*************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
+  \*************************************************************************************************************************************/
+#main-container > h1 {
+  background: red;
+}
+
+#main-container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background-color: blue;
+}
+
+#main-canvas {
+  position: absolute;
+  z-index: 0;
+}
+
+button {
+  color: red;
+  position: absolute;
+  top: 300px;
+  left: 300px;
+  z-index: 1;
+}
