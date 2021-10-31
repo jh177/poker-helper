@@ -28,8 +28,8 @@ class Calculator {
   // function to get all the five card combos out of two hole cards plus 5 board cards
   fiveCardCombos(hand, boardCards){
     let cards = hand.concat(boardCards);
-    let combos = this.comboMaker(cards);
-    return combos.filter(combo => combo.length === 5);
+    let combos = this.comboMaker(cards, 5);
+    return combos;
   }
 
   // main function to get hand strength of any five cards
@@ -179,7 +179,7 @@ class Calculator {
     let combos = this.fiveCardCombos(hand, boardCards)
     let best = combos[0];
     for (let i=1; i<combos.length; i++){
-      if (this.compareTwoCombos(combos[i]>best) === 1) best = combos[i];
+      if (this.compareTwoCombos(combos[i],best) === 1) best = combos[i];
     }
     return best;
   }
@@ -190,30 +190,178 @@ class Calculator {
     let best2 = this.bestFive(hand2, boardCards);
     switch (this.compareTwoCombos(best1, best2)){
       case 1:
-        return hand1;
+        return 1;
       case -1:
-        return hand2;
+        return -1;
       default:
         return 0
     }
   }
 
-  
-  
+  // function to get rest of deck from hand1, hand2 and community cards
+  remainingCards(hand1, hand2, communityCards, deck){
+    let cardsLeft = deck.cards.slice(0);
+    let cardsDealt = hand1.concat(hand2, communityCards)
+    cardsDealt.forEach(card =>{
+      for(let i = 0; i<cardsLeft.length; i++){
+        if (cardsLeft[i].value===card.value && cardsLeft[i].suit === card.suit) {
+          cardsLeft.splice(i, 1);
+          break;
+        }
+      }
+    })
+    return cardsLeft;
+  }
 
-  // winProb(){
-
+  // flopCards(hand1, hand2, deck){
+  //   let cardsLeft = this.remainingCards(hand1, hand2, [], deck);
+  //   let flop = [];
+  //   while (flop.length <3){
+  //     let idx = Math.floor(Math.random()*cardsLeft.length);
+  //     flop.push(cardsLeft[idx]);
+  //     cardsLeft.splice(idx, 1);
+  //   }
+  //   return flop;
+  // }
+  
+  // turnCard(hand1, hand2, flopCards, deck){
+  //   let cardsLeft = this.remainingCards(hand1, hand2, flopCards, deck);
+  //   let idx = Math.floor(Math.random() * cardsLeft.length);
+  //   return cardsLeft[idx];
   // }
 
-  // lossProb(){
-
+  // riverCard(hand1, hand2, communityCards, deck){
+  //   let cardsLeft = this.remainingCards(hand1, hand2, communityCards, deck);
+  //   let idx = Math.floor(Math.random() * cardsLeft.length);
+  //   return cardsLeft[idx];
   // }
 
-  // splitProb(){
-
-  // }
+  preflopProp(hand1, hand2, deck){
+    let cardsLeft = this.remainingCards(hand1, hand2, [], deck);
+    let fiveCardCombos = this.comboMaker(cardsLeft, 5);
+    let winCount = 0;
+    let loseCount = 0;
+    let tieCount = 0;
+    console.log(fiveCardCombos.length);
+    fiveCardCombos.forEach(fiveCardCombo => {
+      switch (this.compareTwoHands(hand1, hand2, fiveCardCombo)) {
+        case 1:
+          winCount += 1;
+          break;
+        case (-1):
+          loseCount += 1;
+          break;
+        default:
+          tieCount += 1;
+          break;
+      }
+    })
+    let total = fiveCardCombos.length
+    return [winCount / total, loseCount / total, tieCount / total]
+  }
   
 
+  flopProp(hand1, hand2, flopCards, deck){
+    let cardsLeft = this.remainingCards(hand1, hand2, flopCards, deck);
+    let trCombos = this.comboMaker(cardsLeft, 2);
+    let winCount = 0;
+    let loseCount = 0;
+    let tieCount = 0;
+    trCombos.forEach(trCombo => {
+      let boardCards = flopCards.concat(trCombo);
+      switch (this.compareTwoHands(hand1, hand2, boardCards)) {
+        case 1:
+          winCount += 1;
+          break;
+        case (-1):
+          loseCount += 1;
+          break;
+        default:
+          tieCount += 1;
+          break;
+      }
+    })
+    return [winCount, loseCount, tieCount];
+  }
+
+
+  turnProp(hand1, hand2, communityCards, deck){
+    let riverCards = this.remainingCards(hand1, hand2, communityCards, deck);
+    let winCount = 0;
+    let loseCount = 0;
+    let tieCount = 0;
+    riverCards.forEach(riverCard => {
+      let boardCards = communityCards.concat(riverCard);
+      switch (this.compareTwoHands(hand1, hand2, boardCards)){
+        case 1:
+          winCount += 1;
+          break;
+        case (-1):
+          loseCount += 1;
+          break;
+        default:
+          tieCount +=1;
+          break;
+      }
+    })
+    return [winCount, loseCount, tieCount];
+  }
+
+  riverProp(hand1, hand2, communityCards){
+    switch (this.compareTwoHands(hand1, hand2, communityCards)) {
+      case 1:
+        return [1,0,0];
+      case (-1):
+        return [0,1,0];
+      default:
+        return [0,0,1];
+    }
+  }
+
+  flopPropAgainstRange(hand1, range, communityCards, deck){
+    let winCount = 0;
+    let loseCount = 0;
+    let tieCount = 0;
+    range.forEach(hand2 => {
+      let outcome = this.flopProp(hand1, hand2, communityCards, deck);
+      winCount += outcome[0];
+      loseCount += outcome[1];
+      tieCount += outcome[2];
+    })
+    let total = winCount + loseCount + tieCount;
+    return [winCount / total, loseCount / total, tieCount / total];
+  }
+
+
+  turnPropAgainstRange(hand1, range, communityCards, deck){
+    let winCount = 0;
+    let loseCount = 0;
+    let tieCount = 0;
+    range.forEach(hand2 => {
+      let outcome = this.turnProp(hand1, hand2, communityCards, deck);
+      winCount += outcome[0];
+      loseCount += outcome[1];
+      tieCount += outcome[2];
+    })
+    let total = winCount + loseCount + tieCount;
+    return [winCount / total, loseCount / total, tieCount / total];
+  }
+
+
+  riverPropAgainstRange(hand1, range, communityCards){
+    let winCount = 0;
+    let loseCount = 0;
+    let tieCount = 0;
+    range.forEach(hand2 => {
+      let outcome = this.riverProp(hand1, hand2, communityCards);
+      winCount += outcome[0];
+      loseCount += outcome[1];
+      tieCount += outcome[2];
+    })
+    let total = winCount + loseCount + tieCount;
+    return [winCount / total, loseCount / total, tieCount / total];
+  }
+  
 
   //--------helper functions to check hand strength-----------//
   checkFlush(handSuits) {
@@ -365,18 +513,25 @@ class Calculator {
 
 
   //--------------More helper function---------------------//
-  comboMaker(arr) {
-  if (arr.length === 0) return [[]];
+  comboMaker(arr, targetLength){
+    let result = [];
 
-  let newEle = arr.pop();
-  let prevResult = comboMaker(arr);
-  let result = []
-  prevResult.forEach(subset => {
-    let newSub = subset.concat(newEle);
-    result.push(newSub);
-  });
-  result = result.concat(prevResult);
-  return result;
+    function dfs(current, start) {
+      if (current.length === targetLength) {
+        result.push(current);
+        return
+      }
+      if (current.length > targetLength) {
+        return;
+      }
+
+      for (let i=start; i<arr.length; i++){
+        dfs(current.concat(arr[i]), i+1);
+      }
+    }
+
+    dfs([], 0);
+    return result;
   }
 
   sortHandValues(arr) {

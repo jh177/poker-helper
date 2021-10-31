@@ -34,15 +34,22 @@ document.addEventListener("DOMContentLoaded", ()=>{
   let c3 = new Card("9", "♥");
   let c4 = new Card("10", "♠");
   let c5 = new Card("K", "♦");
-  let d1 = new Card("7", "♦");
-  let d2 = new Card("8", "♣");
-  let d3 = new Card("9", "♥");
+  let d1 = new Card("7", "♥");
+  let d2 = new Card("8", "♥");
+  let d3 = new Card("9", "♠");
   let d4 = new Card("7", "♠");
   let d5 = new Card("K", "♦");
   const h1 = [c1, c2, c3, c4, c5];
-  const h2 = [d1, d2, d3, d4, d5];
-  console.log(h1);
-  console.log(h2);
+  const board1 = [d1, d2, d3, d4, d5];
+  const hand1 = [c1, c2];
+  const hand2 = [c3, c4]
+  console.log(hand1);
+  console.log(hand2);
+  console.log(board1);
   window.h1 = h1;
-  window.h2 = h2;
+  window.board1 = board1;
+  window.hand1 = hand1;
+  window.hand2 = hand2;
+
+  
 });

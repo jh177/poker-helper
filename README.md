@@ -47,9 +47,9 @@ This project will be implemented with the following technologies:
 
 1. Friday && Weekend: Setup project, including getting webpack up and running. Get canvas to show up on the screen. Create Card and Deck classes. Get the hold cards and community cards to render to the canvas.
 2. Monday: Create a Range class and render a range grid on canvas for displaying the selected range. Make the grid cells interact with card values.
-Tuesday: Implement the logic of calculating possibilities of outcomes.
-3. Wednesday: Finish implementing user controls, and focus on styling. 
-4. Thursday Morning: Deploy to GitHub pages. If time, polish the README.
+3. Tuesday: Implement the logic of calculating possibilities of outcomes.
+4. Wednesday: Finish implementing user controls, and focus on styling. 
+5. Thursday Morning: Deploy to GitHub pages. If time, polish the README.
 
 
 
