@@ -36,7 +36,6 @@ class Calculator {
     let uniqVals = this.uniqValues(handValues)
     this.sortHandValues(uniqVals);
     let handSuits = sevenCards.map(card => card.suit);
-
     // count card values
     let cardValCount = {};
     handValues.forEach(val => {
@@ -55,31 +54,32 @@ class Calculator {
         suitCount[suit] += 1;
       }
     })
-
     //check royal flush
-    if (uniqVals.join("").includes("10JQKA") && this.checkFlush(handSuits)) {
+    if (uniqVals.join("").includes("10JQKA") && this.checkStraightFlush("A", sevenCards)) {
       return [1, "RoyalFlush"];
     }
 
     //check straight flush
-    if (this.checkStraight(uniqVals)!=="none" && this.checkFlush(suitCount)){
+    let kicker = this.checkStraight(uniqVals);
+    if (kicker !=="none" && this.checkStraightFlush(kicker, sevenCards)){
       return [2, 
         "StraightFlush", 
-        VALUES.indexOf(this.checkStraight(uniqVals))];
+        VALUES.indexOf(kicker)];
     }
     
     //flush
     if (this.checkFlush(suitCount)){
-      let s = this.getCardValByCount(suitCount, 5);
-      let flushVal = sevenCards.filter(card => card.suit === s );
-      this.sortHandValues(flushVal);
+      let s = this.getCardValByCount(suitCount, 5) || this.getCardValByCount(suitCount, 6) || this.getCardValByCount(suitCount, 7);
+      let flushVals = sevenCards.filter(card => card.suit === s ).map(card => card.value);
+      this.sortHandValues(flushVals);
+      let endIdx = flushVals.length-1;
       return [5,
         "Flush",
-        VALUES.indexOf(flushVal[4]),
-        VALUES.indexOf(flushVal[3]),
-        VALUES.indexOf(flushVal[2]),
-        VALUES.indexOf(flushVal[1]),
-        VALUES.indexOf(flushVal[0]),
+        VALUES.indexOf(flushVals[endIdx]),
+        VALUES.indexOf(flushVals[endIdx-1]),
+        VALUES.indexOf(flushVals[endIdx-2]),
+        VALUES.indexOf(flushVals[endIdx-3]),
+        VALUES.indexOf(flushVals[endIdx-4]),
       ];
     }
 
@@ -367,6 +367,7 @@ class Calculator {
     let tieCount = 0;
     range.forEach(hand2 => {
       let outcome = this.flopProp(hand1, hand2, communityCards, deck);
+      console.log(outcome)
       winCount += outcome[0];
       loseCount += outcome[1];
       tieCount += outcome[2];
@@ -408,11 +409,51 @@ class Calculator {
 
   //--------helper functions to check hand strength-----------//
   checkFlush(suitCount) {
-    if (Object.values(suitCount).includes(5)) {
+    if (Object.values(suitCount).includes(5) || Object.values(suitCount).includes(6) || 
+      Object.values(suitCount).includes(7)) {
       return true;
     } else {
       return false;
     }
+  }
+
+  checkStraightFlush(kicker, sevenCards) {
+    let cards = []
+    let cardValIdx = []
+    let straightEndIdx;
+    if (kicker === "5"){
+      straightEndIdx = VALUES.indexOf(kicker);
+      cardValIdx.push(straightEndIdx);
+      let idx;
+      for (let i=1; i<4; i++){
+        idx = straightEndIdx - i;
+        cardValIdx.unshift(idx);
+        cardValIdx.unshift(12);
+      }
+    } else {
+      straightEndIdx = VALUES.indexOf(kicker);
+      cardValIdx.push(straightEndIdx);
+      let idx;
+      for (let i = 1; i < 5; i++) {
+        idx = straightEndIdx - i;
+        cardValIdx.unshift(idx);
+      }
+    }
+    let cardVals = cardValIdx.map(idx => VALUES[idx])
+    for(let i=0; i<7; i++){
+      if (cardVals.includes(sevenCards[i].value)) {
+        cards.push(sevenCards[i])
+      }
+    }
+    let suitCount = {};
+    cards.forEach(card => {
+      if (suitCount[card.suit] === undefined) {
+        suitCount[card.suit] = 1;
+      } else {
+        suitCount[card.suit] += 1;
+      }
+    })
+    return this.checkFlush(suitCount);
   }
 
   checkStraight(uniqVals) {
