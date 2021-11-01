@@ -23,19 +23,47 @@ class Calculator {
 
   
   // function to get all the five card combos out of two hole cards plus 5 board cards
-  // fiveCardCombos(hand, boardCards){
-  //   let cards = hand.concat(boardCards);
-  //   let combos = this.comboMaker(cards, 5);
-  //   return combos;
-  // }
+  fiveCardCombos(hand, boardCards){
+    let cards = hand.concat(boardCards);
+    let combos = this.comboMaker(cards, 5);
+    return combos;
+  }
 
   // main function to get hand strength of any five cards
-  // handStrength(fiveCards){
-  handStrength(sevenCards){
-    let handValues = this.sortHandValues(sevenCards.map(card => card.value));
-    let uniqVals = this.uniqValues(handValues)
-    this.sortHandValues(uniqVals);
-    let handSuits = sevenCards.map(card => card.suit);
+  handStrength(fiveCards){
+    let handValues = this.sortHandValues(fiveCards.map(card => card.value));
+    let handSuits = fiveCards.map(card => card.suit);
+    this.sortHandValues(handSuits);
+
+    //check royal flush
+    if (handValues.join("") === "10JQKA" && this.checkFlush(handSuits)) {
+      return [1, "RoyalFlush"];
+    }
+
+    //check straight flush
+    if (this.checkStraight(handValues) && this.checkFlush(handSuits)){
+      return [2, "StraightFlush", VALUES.indexOf(handValues[4])];
+    }
+    
+    //flush
+    if (this.checkFlush(handSuits)){
+      return [5,
+        "Flush",
+        VALUES.indexOf(handValues[0]),
+        VALUES.indexOf(handValues[1]),
+        VALUES.indexOf(handValues[2]),
+        VALUES.indexOf(handValues[3]),
+        VALUES.indexOf(handValues[4]),
+      ];
+    }
+
+    //check straight
+    if (this.checkStraight(handValues)){
+      return [6, 
+        "Straight",
+        VALUES.indexOf(handValues[4])
+      ]
+    } ;
 
     // count card values
     let cardValCount = {};
@@ -47,135 +75,60 @@ class Calculator {
       }
     })
 
-    let suitCount = {};
-    handSuits.forEach(suit => {
-      if (suitCount[suit] === undefined) {
-        suitCount[suit] = 1;
-      } else {
-        suitCount[suit] += 1;
-      }
-    })
-
-    //check royal flush
-    if (uniqVals.join("").includes("10JQKA") && this.checkFlush(handSuits)) {
-      return [1, "RoyalFlush"];
-    }
-
-    //check straight flush
-    if (this.checkStraight(uniqVals)!=="none" && this.checkFlush(suitCount)){
-      return [2, 
-        "StraightFlush", 
-        VALUES.indexOf(this.checkStraight(uniqVals))];
-    }
-    
-    //flush
-    if (this.checkFlush(suitCount)){
-      let s = this.getCardValByCount(suitCount, 5);
-      let flushVal = sevenCards.filter(card => card.suit === s );
-      this.sortHandValues(flushVal);
-      return [5,
-        "Flush",
-        VALUES.indexOf(flushVal[4]),
-        VALUES.indexOf(flushVal[3]),
-        VALUES.indexOf(flushVal[2]),
-        VALUES.indexOf(flushVal[1]),
-        VALUES.indexOf(flushVal[0]),
-      ];
-    }
-
-    //check straight
-    if (this.checkStraight(uniqVals) !== "none"){
-      return [6, 
-        "Straight",
-        VALUES.indexOf(this.checkStraight(uniqVals))
-      ]
-    }
-
-
     //check 4 of a kind
     if (this.checkFourOfKind(cardValCount)) {
-      let four = this.getCardValByCount(cardValCount, 4);
-      let kickers = uniqVals.filter(el=> el!==four);
       return [3, 
         "FourOfAKind",
-        VALUES.indexOf(four),
-        VALUES.indexOf(kickers[kickers.length - 1])
-      ]
+        VALUES.indexOf(this.getCardValByCount(cardValCount, 4)),
+        VALUES.indexOf(this.getCardValByCount(cardValCount, 1))];
     }
 
     //full house
     if (this.checkFullHouse(cardValCount)) {
-      let three = this.getCardValByCount(cardValCount, 3);
-      let kicker;
-      if (Object.values(cardValCount).includes(1)){
-        kicker = this.getCardValByCount(cardValCount, 2);
-      } else {
-        let pairs = uniqVals.filter(el=> el!==three);
-        this.sortHandValues(pairs);
-        kicker = pairs[pairs.length-1];
-      }
       return [4, 
         "FullHouse", 
-        VALUES.indexOf(three),
-        VALUES.indexOf(kicker)
-      ];
+        VALUES.indexOf(this.getCardValByCount(cardValCount, 3)), 
+        VALUES.indexOf(this.getCardValByCount(cardValCount, 2))];
     }
 
     //three of a kind
     if (this.checkThreeOfKind(cardValCount)){
-      let three = this.getCardValByCount(cardValCount, 3);
-      let kickers = uniqVals.filter(el => el !== three);
-      this.sortHandValues(kickers);
       return [7, 
         "ThreeOfAKind",
-        VALUES.indexOf(three),
-        VALUES.indexOf(kickers[3]),
-        VALUES.indexOf(kickers[2])
+        VALUES.indexOf(Object.keys(cardValCount)[0]),
+        VALUES.indexOf(Object.keys(cardValCount)[1]),
+        VALUES.indexOf(Object.keys(cardValCount)[2]),
       ];
     }
 
     // 2 pairs
     if (this.checkTwoPairs(cardValCount)){
-      let pairVals = [];
-      let kickers = [];
-      for(let i=0; i<handValues.length; i++){
-        if (handValues[i] === handValues[i+1] || handValues[i-1] === handValues[i]){
-          if (!pairVals.includes(handValues[i])) pairVals.push(handValues[i]);
-        } else {
-          kickers.push(handValues[i]);
-        }
-      }
-      this.sortHandValues(pairVals);
-      this.sortHandValues(kickers);
       return [8,
         "TwoPairs",
-        VALUES.indexOf(pairVals[pairVals.length-1]),
-        VALUES.indexOf(pairVals[pairVals.length-2]),
-        VALUES.indexOf(kickers[kickers.length-1])
+        VALUES.indexOf(Object.keys(cardValCount)[0]),
+        VALUES.indexOf(Object.keys(cardValCount)[1]),
+        VALUES.indexOf(Object.keys(cardValCount)[2]),
       ];
     }
 
     // 1 pair
     if (this.checkOnePair(cardValCount)) {
-      let pairVal = this.getCardValByCount(cardValCount, 2);
-      let kickers = handValues.filter(el=>el!==pairVal);
-      this.sortHandValues(kickers);
       return [9, 
         "OnePair",
-        VALUES.indexOf(pairVal),
-        VALUES.indexOf(kickers[4]),
-        VALUES.indexOf(kickers[3]),
-        VALUES.indexOf(kickers[2])
+        VALUES.indexOf(Object.keys(cardValCount)[0]),
+        VALUES.indexOf(Object.keys(cardValCount)[1]),
+        VALUES.indexOf(Object.keys(cardValCount)[2]),
+        VALUES.indexOf(Object.keys(cardValCount)[3]),
       ];
     }
     // high cards
     return [10, 
       "HighCard",
-      VALUES.indexOf(Object.keys(cardValCount)[6]),
-      VALUES.indexOf(Object.keys(cardValCount)[5]),
-      VALUES.indexOf(Object.keys(cardValCount)[4]),
+      VALUES.indexOf(Object.keys(cardValCount)[0]),
+      VALUES.indexOf(Object.keys(cardValCount)[1]),
+      VALUES.indexOf(Object.keys(cardValCount)[2]),
       VALUES.indexOf(Object.keys(cardValCount)[3]),
-      VALUES.indexOf(Object.keys(cardValCount)[2])
+      VALUES.indexOf(Object.keys(cardValCount)[4]),
     ];
   }
 
@@ -219,20 +172,20 @@ class Calculator {
     }
   }
 
-  // bestFive(hand, boardCards){
-  //   let combos = this.fiveCardCombos(hand, boardCards)
-  //   let best = combos[0];
-  //   for (let i=1; i<combos.length; i++){
-  //     if (this.compareTwoCombos(combos[i],best) === 1) best = combos[i];
-  //   }
-  //   return best;
-  // }
+  bestFive(hand, boardCards){
+    let combos = this.fiveCardCombos(hand, boardCards)
+    let best = combos[0];
+    for (let i=1; i<combos.length; i++){
+      if (this.compareTwoCombos(combos[i],best) === 1) best = combos[i];
+    }
+    return best;
+  }
 
   // main function to compare two hands
   compareTwoHands(hand1, hand2, boardCards){
-    let seven1 = hand1.concat(boardCards);
-    let seven2 = hand2.concat(boardCards);
-    switch (this.compareTwoCombos(seven1, seven2)){
+    let best1 = this.bestFive(hand1, boardCards);
+    let best2 = this.bestFive(hand2, boardCards);
+    switch (this.compareTwoCombos(best1, best2)){
       case 1:
         return 1;
       case -1:
@@ -407,51 +360,25 @@ class Calculator {
 
 
   //--------helper functions to check hand strength-----------//
-  checkFlush(suitCount) {
-    if (Object.values(suitCount).includes(5)) {
-      return true;
-    } else {
-      return false;
-    }
+  checkFlush(handSuits) {
+    return [...new Set(handSuits)].length === 1
   }
 
-  checkStraight(uniqVals) {
-    let kicker = "none"
+  checkStraight(sortedHandValues) {
     let aceStragith = ["2", "3", "4", "5", "A"];
     //check ace straight
-    if (uniqVals.join("").includes(aceStragith.join(""))) {
-      kicker = "A";
+    if (sortedHandValues.join("") === aceStragith.join("")) {
+      return true;
     }
 
-    if (uniqVals.length === 5){
-      let startIdx = VALUES.indexOf(uniqVals[0]);
-      if (uniqVals.join("") === VALUES.slice(startIdx, startIdx + 5).join("")){
-        kicker = uniqVals[4];
-      }
-    } else if (uniqVals.length === 6){
-      let startIdx1 = VALUES.indexOf(uniqVals[0]);
-      let startIdx2 = VALUES.indexOf(uniqVals[1]);
-      if (uniqVals.slice(0, 5).join("") === VALUES.slice(startIdx1, startIdx1 + 5).join("")){
-        kicker = uniqVals[4];
-      }
-      if (uniqVals.slice(1).join("") === VALUES.slice(startIdx2, startIdx2 + 5).join("")){
-        kicker = uniqVals[5];
-      }
-    } else {
-      let startIdx1 = VALUES.indexOf(uniqVals[0]);
-      let startIdx2 = VALUES.indexOf(uniqVals[1]);
-      let startIdx3 = VALUES.indexOf(uniqVals[2]);
-      if (uniqVals.slice(0, 5).join("") === VALUES.slice(startIdx1, startIdx1 + 5).join("")){
-        kicker = uniqVals[4];
-      }
-      if (uniqVals.slice(1, 6).join("") === VALUES.slice(startIdx2, startIdx2 + 5).join("")){
-        kicker = uniqVals[5];
-      }
-      if (uniqVals.slice(2).join("") === VALUES.slice(startIdx3, startIdx3 + 5).join("")) {
-        kicker = uniqVals[6];;
+    let startIdx = VALUES.indexOf(sortedHandValues[0]);
+
+    for (let i = 1; i < sortedHandValues.length; i++) {
+      if (sortedHandValues[i] !== VALUES[startIdx + i]) {
+        return false;
       }
     }
-    return kicker;
+    return true;
   }
 
   checkFourOfKind(cardValCount) {
@@ -466,17 +393,14 @@ class Calculator {
 
   checkThreeOfKind(cardValCount) {
     if (Object.values(cardValCount).includes(3) && !Object.values(cardValCount).includes(2)) return true;
-    return false;
   }
 
   checkTwoPairs(cardValCount) {
-    if (Object.values(cardValCount).sort().join("").includes("22")) return true;
-    return false;
+    if (Object.values(cardValCount).includes(2) && Object.keys(cardValCount).length === 3) return true;
   }
 
   checkOnePair(cardValCount) {
-    if (Object.values(cardValCount).includes(2) && !this.checkTwoPairs(cardValCount)) return true;
-    return false;
+    if (Object.values(cardValCount).includes(2) && Object.keys(cardValCount).length === 4) return true;
   }
 
   //-------------------------------------------------------//
@@ -492,13 +416,9 @@ class Calculator {
 
   // four of kind tie breaker
   TB3(stg1, stg2) {
-    if (stg1[2] > stg2[2]) return 1;
-    if (stg1[2] === stg2[2]) {
-      if (stg1[3] > stg2[3]) return 1;
-      if (stg1[3] === stg2[3]) return 0;
-      if (stg1[3] < stg2[3]) return -1;
-    }
-    if (stg1[2] < stg2[2]) return -1;
+    if (stg1[3] > stg2[3]) return 1;
+    if (stg1[3] === stg2[3]) return 0;
+    if (stg1[3] < stg2[3]) return -1;
   }
 
   // full house tie breaker
@@ -530,9 +450,9 @@ class Calculator {
     } else if (stg1[2] < stg2[2]) {
       return -1;
     } else {
-      let val1 = stg1.slice(3);
-      let val2 = stg2.slice(3);
-      for (let i = 0; i < val1.length; i++) {
+      let val1 = this.sortHandValues(stg1.slice(3));
+      let val2 = this.sortHandValues(stg2.slice(3));
+      for (let i = val1.length - 1; i >= 0; i--) {
         if (val1[i] > val2[i]) return 1;
         if (val1[i] < val2[i]) return -1;
       }
@@ -542,18 +462,19 @@ class Calculator {
 
   // 2 pairs tie breaker
   TB8(stg1, stg2) {
-    if (stg1[2] > stg2[2]) {
-      return 1;
-    } else if (stg1[2] < stg2[2]) {
-      return -1;
-    } else {
-      if (stg1[3] > stg2[3]) {
+    let pairs1 = this.sortHandValues(stg1.slice(2, 4));
+    let pairs2 = this.sortHandValues(stg2.slice(2, 4));
+    for (let i = pairs1.length - 1; i >= 0; i--) {
+      if (pairs1[i] > pairs2[i]) {
         return 1;
-      } else if (stg1[3] < stg2[3]) {
+      } else if (pairs1[i] < pairs2[i]) {
         return -1;
+      } else {
+        if (stg1[4] > stg2[4]) return 1;
+        if (stg1[4] < stg2[4]) return -1;
+        return 0;
       }
     }
-    return 0;
   }
 
   // 1 pair tie breaker
@@ -563,9 +484,9 @@ class Calculator {
     } else if (stg1[2] < stg2[2]) {
       return -1;
     } else {
-      let val1 = stg1.slice(3)
-      let val2 = stg2.slice(3)
-      for (let i = 0; i < val1.length; i++) {
+      let val1 = this.sortHandValues(stg1.slice(3))
+      let val2 = this.sortHandValues(stg2.slice(3))
+      for (let i = val1.length - 1; i >= 0; i--) {
         if (val1[i] > val2[i]) return 1;
         if (val1[i] < val2[i]) return -1;
       }
@@ -575,9 +496,9 @@ class Calculator {
 
   // high card tie breaker
   TB10(stg1, stg2) {
-    let val1 = stg1.slice(2)
-    let val2 = stg2.slice(2)
-    for (let i = 0; i < val1.length; i++) {
+    let val1 = this.sortHandValues(stg1.slice(2))
+    let val2 = this.sortHandValues(stg2.slice(2))
+    for (let i = val1.length - 1; i >= 0; i--) {
       if (val1[i] > val2[i]) return 1;
       if (val1[i] < val2[i]) return -1;
     }
@@ -621,10 +542,6 @@ class Calculator {
       }
     }
     return arr;
-  }
-
-  uniqValues(arr){
-    return [...new Set(arr)];
   }
 
   getCardValByCount(countObj, count) {

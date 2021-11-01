@@ -29,17 +29,17 @@ document.addEventListener("DOMContentLoaded", ()=>{
   window.calculator = calculator;
 
   //for testing
-  let c1 = new Card("7", "♦");
-  let c2 = new Card("8", "♣");
-  let c3 = new Card("9", "♥");
-  let c4 = new Card("10", "♠");
-  let c5 = new Card("K", "♦");
-  let d1 = new Card("7", "♥");
-  let d2 = new Card("8", "♥");
+  let c1 = new Card("10", "♦");
+  let c2 = new Card("6", "♣");
+  let c3 = new Card("5", "♥");
+  let c4 = new Card("K", "♠");
+  let c5 = new Card("J", "♦");
+  let d1 = new Card("A", "♥");
+  let d2 = new Card("9", "♥");
   let d3 = new Card("9", "♠");
   let d4 = new Card("7", "♠");
-  let d5 = new Card("K", "♦");
-  const h1 = [c1, c2, c3, c4, c5];
+  let d5 = new Card("K", "♣");
+  const h1 = [c1, c2, c3, c4, c5, d1, d2];
   const board1 = [d1, d2, d3, d4, d5];
   const hand1 = [c1, c2];
   const hand2 = [c3, c4]
