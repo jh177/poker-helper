@@ -19,9 +19,9 @@ class Deck{
     return newDeck;
   }
 
-  findCardByInfo([val, suit]){
+  findCardByInfo([suit, val]){
     for(let i=0; i<52; i++){
-      if (this.cards[i].value === val && this.cards[i].suit === suit) {
+      if (this.cards[i].suit === suit && this.cards[i].value === val) {
         return this.cards[i];
       }
     }
