@@ -4,14 +4,53 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./src/css_reset.scss" />
   <link rel="stylesheet" href="./dist/main.css" />
   <script src="./dist/main.js"></script>
   <title>Poker Helper</title>
 </head>
+
 <body>
-  <div id="main-container">
-    <canvas id="main-canvas" width=720 height=640></canvas>
-    <button type="button">hello</button>
+  <header>
+    <h1 class="main-title">Guardian of the Chips</h1>
+  </header>
+  
+  <div class="canvas-container">
+    <canvas id="main-canvas"></canvas>
   </div>
+
+  <main class="content">
+
+    <section class="cards-sidebar">
+      <p>Cards</p>
+      <br>
+      <div class="side-cards"></div>
+    </section>
+    
+    <section class="main-container">
+
+      <div class="range">
+        <p>Range</p>
+      </div>
+      <div class="board-cards">
+        <p>Board</p>
+      </div>
+      <div class="hole-cards">
+        <p>Hole Cards</p>
+      </div>
+
+    </section>
+
+    <section class="result">
+      <p>Result</p>
+      <br>
+      <div class="result-display"></div>
+      <button class="simulation">Simulation</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>github, linkedin</p>
+  </footer>
 </body>
 </html>

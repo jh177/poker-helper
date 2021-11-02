@@ -5,22 +5,142 @@
   background: red;
 }
 
-#main-container {
-  height: 100%;
-  width: 100%;
+body {
   position: relative;
-  background-color: blue;
 }
 
-#main-canvas {
+.canvas-container {
   position: absolute;
   z-index: 0;
 }
 
-button {
-  color: red;
-  position: absolute;
-  top: 300px;
-  left: 300px;
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  background: lightgray;
+  width: 900px;
   z-index: 1;
+}
+
+.content p {
+  text-align: center;
+}
+
+.cards-sidebar {
+  width: 150px;
+  min-height: 200px;
+  border-right: 1px solid black;
+  margin: 0 10px 0 0;
+  z-index: 1;
+}
+
+.main-container {
+  width: 580px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+.result {
+  width: 150px;
+  min-height: 200px;
+  border: 0 0 0 10px;
+  border-left: 1px solid black;
+  z-index: 1;
+}
+
+.side-cards > ul {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.side-cards > ul > li {
+  list-style-type: none;
+  background: plum;
+  width: 25px;
+  height: 35px;
+  margin: 0 2px 5px 2px;
+  z-index: 1;
+}
+
+.side-cards > ul > li:hover {
+  background: purple;
+  cursor: pointer;
+}
+
+.board-cards > ul {
+  display: flex;
+}
+
+.board-cards > ul > li {
+  list-style-type: none;
+  background: plum;
+  width: 40px;
+  height: 56px;
+  margin: 0 5px 0 0;
+  border: 1px solid black;
+  z-index: 1;
+}
+
+.board-cards > ul > li:hover {
+  background: purple;
+  cursor: pointer;
+}
+
+.hole-cards > ul {
+  display: flex;
+}
+
+.hole-cards > ul > li {
+  list-style-type: none;
+  background: plum;
+  width: 40px;
+  height: 56px;
+  margin: 0 5px 0 0;
+  border: 1px solid black;
+  z-index: 1;
+}
+
+.hole-cards > ul > li:hover {
+  background: purple;
+  cursor: pointer;
+}
+
+.range > ul {
+  display: flex;
+}
+
+.range > ul > li {
+  list-style-type: none;
+  background: plum;
+  width: 40px;
+  height: 56px;
+  margin: 0 5px 0 0;
+  border: 1px solid black;
+  z-index: 1;
+}
+
+.range > ul > li:hover {
+  background: purple;
+  cursor: pointer;
+}
+
+.result-display > li {
+  list-style-type: none;
+}
+
+.simulation:hover {
+  background: gold;
+  cursor: pointer;
+}
+
+footer {
+  border: 1px solid black;
+  position: fixed;
+  bottom: 0;
 }

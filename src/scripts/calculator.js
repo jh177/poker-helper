@@ -67,31 +67,6 @@ class Calculator {
         VALUES.indexOf(kicker)];
     }
     
-    //flush
-    if (this.checkFlush(suitCount)){
-      let s = this.getCardValByCount(suitCount, 5) || this.getCardValByCount(suitCount, 6) || this.getCardValByCount(suitCount, 7);
-      let flushVals = sevenCards.filter(card => card.suit === s ).map(card => card.value);
-      this.sortHandValues(flushVals);
-      let endIdx = flushVals.length-1;
-      return [5,
-        "Flush",
-        VALUES.indexOf(flushVals[endIdx]),
-        VALUES.indexOf(flushVals[endIdx-1]),
-        VALUES.indexOf(flushVals[endIdx-2]),
-        VALUES.indexOf(flushVals[endIdx-3]),
-        VALUES.indexOf(flushVals[endIdx-4]),
-      ];
-    }
-
-    //check straight
-    if (this.checkStraight(uniqVals) !== "none"){
-      return [6, 
-        "Straight",
-        VALUES.indexOf(this.checkStraight(uniqVals))
-      ]
-    }
-
-
     //check 4 of a kind
     if (this.checkFourOfKind(cardValCount)) {
       let four = this.getCardValByCount(cardValCount, 4);
@@ -121,6 +96,31 @@ class Calculator {
       ];
     }
 
+    
+    //flush
+    if (this.checkFlush(suitCount)){
+      let s = this.getCardValByCount(suitCount, 5) || this.getCardValByCount(suitCount, 6) || this.getCardValByCount(suitCount, 7);
+      let flushVals = sevenCards.filter(card => card.suit === s ).map(card => card.value);
+      this.sortHandValues(flushVals);
+      let endIdx = flushVals.length-1;
+      return [5,
+        "Flush",
+        VALUES.indexOf(flushVals[endIdx]),
+        VALUES.indexOf(flushVals[endIdx-1]),
+        VALUES.indexOf(flushVals[endIdx-2]),
+        VALUES.indexOf(flushVals[endIdx-3]),
+        VALUES.indexOf(flushVals[endIdx-4]),
+      ];
+    }
+    
+    //check straight
+    if (this.checkStraight(uniqVals) !== "none"){
+      return [6, 
+        "Straight",
+        VALUES.indexOf(this.checkStraight(uniqVals))
+      ]
+    }
+    
     //three of a kind
     if (this.checkThreeOfKind(cardValCount)){
       let three = this.getCardValByCount(cardValCount, 3);
@@ -133,7 +133,7 @@ class Calculator {
         VALUES.indexOf(kickers[2])
       ];
     }
-
+    
     // 2 pairs
     if (this.checkTwoPairs(cardValCount)){
       let pairVals = [];
@@ -361,13 +361,26 @@ class Calculator {
     }
   }
 
+  preflopPropAgainstRange(hand1, range, deck) {
+    let winCount = 0;
+    let loseCount = 0;
+    let tieCount = 0;
+    range.forEach(hand2 => {
+      let outcome = this.preflopProp(hand1, hand2, deck);
+      winCount += outcome[0];
+      loseCount += outcome[1];
+      tieCount += outcome[2];
+    })
+    let total = winCount + loseCount + tieCount;
+    return [winCount / total, loseCount / total, tieCount / total];
+  }
+
   flopPropAgainstRange(hand1, range, communityCards, deck){
     let winCount = 0;
     let loseCount = 0;
     let tieCount = 0;
     range.forEach(hand2 => {
       let outcome = this.flopProp(hand1, hand2, communityCards, deck);
-      console.log(outcome)
       winCount += outcome[0];
       loseCount += outcome[1];
       tieCount += outcome[2];
@@ -404,6 +417,19 @@ class Calculator {
     })
     let total = winCount + loseCount + tieCount;
     return [winCount / total, loseCount / total, tieCount / total];
+  }
+
+  getResult(hand1, range, communityCards, deck){
+    switch (communityCards.length){
+      case 0:
+        return this.preflopPropAgainstRange(hand1, range, deck);
+      case 3:
+        return this.flopPropAgainstRange(hand1, range, communityCards, deck);
+      case 4:
+        return this.turnPropAgainstRange(hand1, range, communityCards, deck);
+      default:
+        return this.riverPropAgainstRange(hand1, range, communityCards, deck);
+    }
   }
 
 

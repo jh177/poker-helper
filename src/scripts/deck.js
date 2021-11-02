@@ -1,7 +1,7 @@
 import Card from "./card.js"
 
 const VALUES = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
-const SUITES = { diamond: "♦", club: "♣", hearts: "♥", spades: "♠" };
+const SUITES = { diamond: "diamond", club: "club", hearts: "heart", spades: "spade" };
 
 class Deck{
   constructor(){
@@ -17,6 +17,14 @@ class Deck{
       })
     })
     return newDeck;
+  }
+
+  findCardByInfo([val, suit]){
+    for(let i=0; i<52; i++){
+      if (this.cards[i].value === val && this.cards[i].suit === suit) {
+        return this.cards[i];
+      }
+    }
   }
 
   
