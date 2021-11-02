@@ -34,7 +34,7 @@ class Calculator {
   handStrength(sevenCards){
     let handValues = this.sortHandValues(sevenCards.map(card => card.value));
     let uniqVals = this.uniqValues(handValues)
-    this.sortHandValues(uniqVals);
+    // this.sortHandValues(uniqVals);
     let handSuits = sevenCards.map(card => card.suit);
     // count card values
     let cardValCount = {};
@@ -80,20 +80,51 @@ class Calculator {
 
     //full house
     if (this.checkFullHouse(cardValCount)) {
-      let three = this.getCardValByCount(cardValCount, 3);
+      let threeVals = [];
+      let kickers = [];
       let kicker;
-      if (Object.values(cardValCount).includes(1)){
-        kicker = this.getCardValByCount(cardValCount, 2);
+      let three;
+      for (let i = 1; i < handValues.length; i++) {
+        if (handValues[i] === handValues[i - 1] && handValues[i] === handValues[i+1]) {
+          if (!threeVals.includes(handValues[i])) threeVals.push(handValues[i]);
+        } else if (handValues[i] === handValues[i - 1] || handValues[i] === handValues[i + 1]){
+          if (!kickers.includes(handValues[i])) kickers.push(handValues[i]);
+        }
+      }
+      if (threeVals.length > 1) {
+        kicker = threeVals.shift();
+        three = threeVals[0];
       } else {
-        let pairs = uniqVals.filter(el=> el!==three);
-        this.sortHandValues(pairs);
-        kicker = pairs[pairs.length-1];
+        for(let i=kickers.length-1; i>=0; i--){
+          if (kickers[i] !== three) {
+            kicker = kickers[i];
+            break;
+          }
+        }
       }
       return [4, 
         "FullHouse", 
         VALUES.indexOf(three),
         VALUES.indexOf(kicker)
       ];
+
+
+
+
+      // let three = this.getCardValByCount(cardValCount, 3);
+      // let kicker;
+      // if (Object.values(cardValCount).includes(1)){
+      //   kicker = this.getCardValByCount(cardValCount, 2);
+      // } else {
+      //   let pairs = uniqVals.filter(el=> el!==three);
+      //   this.sortHandValues(pairs);
+      //   kicker = pairs[pairs.length-1];
+      // }
+      // return [4, 
+      //   "FullHouse", 
+      //   VALUES.indexOf(three),
+      //   VALUES.indexOf(kicker)
+      // ];
     }
 
     
@@ -527,7 +558,7 @@ class Calculator {
   }
 
   checkFullHouse(cardValCount) {
-    if (Object.values(cardValCount).includes(3) && Object.values(cardValCount).includes(2)) return true;
+    if (Object.values(cardValCount).includes(3) && Object.keys(cardValCount).length < 5) return true;
     return false;
   }
 
