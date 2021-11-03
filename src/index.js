@@ -31,9 +31,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
   // console.log(control.list)
   window.control = control;
 
-  const deck = new Deck();
-  // console.log(deck);
-  window.deck = deck;
+  // const deck = new Deck();
+  // // console.log(deck);
+  // window.deck = deck;
 
   const calculator = new Calculator();
   // console.log(calculator);
@@ -41,31 +41,31 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 
 
-  // using canvas to draw a poker table
-  const canvasEl = document.getElementById("main-canvas");
-  canvasEl.width = window.innerWidth;
-  canvasEl.height = window.innerHeight;
+  // // using canvas to draw a poker table
+  // const canvasEl = document.getElementById("main-canvas");
+  // canvasEl.width = window.innerWidth;
+  // canvasEl.height = window.innerHeight;
   
-  const ctx = canvasEl.getContext("2d");
+  // const ctx = canvasEl.getContext("2d");
 
-  // draw oval table
-  function drawTable(){
-    ctx.beginPath();
-    ctx.ellipse(canvasEl.width * 0.5, canvasEl.height * 0.45, 180, 240, Math.PI / 2, 0, 2 * Math.PI);
-    ctx.stroke();
-    ctx.fillStyle = "green";
-    ctx.fill();
-  }
+  // // draw oval table
+  // function drawTable(){
+  //   ctx.beginPath();
+  //   ctx.ellipse(canvasEl.width * 0.5, canvasEl.height * 0.45, 180, 240, Math.PI / 2, 0, 2 * Math.PI);
+  //   ctx.stroke();
+  //   ctx.fillStyle = "green";
+  //   ctx.fill();
+  // }
 
-  drawTable();
+  // drawTable();
 
-  window.addEventListener('resize',
-    function () {
-      canvasEl.width = window.innerWidth;
-      canvasEl.height = window.innerHeight;
-      drawTable();
-    }
-  );
+  // window.addEventListener('resize',
+  //   function () {
+  //     canvasEl.width = window.innerWidth;
+  //     canvasEl.height = window.innerHeight;
+  //     drawTable();
+  //   }
+  // );
 
 
 

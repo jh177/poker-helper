@@ -139,6 +139,11 @@ body {
   cursor: pointer;
 }
 
+.reset-button:hover {
+  background: gold;
+  cursor: pointer;
+}
+
 footer {
   border: 1px solid black;
   position: fixed;

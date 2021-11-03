@@ -59,19 +59,33 @@ class Control{
   clickPos(event) {
     let pos = event.target;
     this.posToAddCard = pos.id;
+    let posId = pos.id;
+    console.log(parseInt(posId[4]));
     if (pos.dataset.fill === "empty") {
-      this.bindListEvents(); 
-      this.removePosEvents();
+      if ((posId.includes("flop") && parseInt(posId[4]) !== this.boardCards.length+1) ||
+        (posId === "turn" && this.boardCards.length !== 3 ) || 
+        (posId === "river" && this.boardCards.length !== 4)) {
+        return;
+      } else {
+        this.bindListEvents();
+        this.removePosEvents();
+      }
     } else {
-      let posId = pos.id;
-      this.removeCardFromPos(posId);
-      pos.dataset.fill = "empty";
-      return;
+      if ((posId.includes("flop") && parseInt(posId[4]) !== this.boardCards.length) ||
+        (posId === "turn" && this.boardCards.length !== 4) ||
+        (posId === "river" && this.boardCards.length !== 5)) {
+        return;
+      } else {
+        this.removeCardFromPos(posId);
+        pos.dataset.fill = "empty";
+        pos.src = "assets/images/cards/BLUE_BACK.svg"
+        return;
+      }
     }
     
-    console.log(`hole cards: ${this.holeCards}`);
-    console.log(`board cards: ${this.boardCards}`)
-    console.log(`range cards: ${this.rangeCards}`)
+    // console.log(`hole cards: ${this.holeCards}`);
+    // console.log(`board cards: ${this.boardCards}`)
+    // console.log(`range cards: ${this.rangeCards}`)
     
   }
 
@@ -153,10 +167,10 @@ class Control{
       }
     });
 
-    let images = document.querySelectorAll(".card-image");
-    images.forEach(img =>{
-      img.addEventListener('click', event => event.stopPropagation());
-    })
+    // let images = document.querySelectorAll(".card-image");
+    // images.forEach(img =>{
+    //   img.addEventListener('click', event => event.stopPropagation());
+    // })
 
     console.log("add list cards listeners!")
   }

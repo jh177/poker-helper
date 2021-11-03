@@ -311,27 +311,33 @@ class Calculator {
   //   return cardsLeft[idx];
   // }
 
-  preflopProp(hand1, hand2, deck){
+  preflopProp(hand1, hand2, deck, iterations){
     let cardsLeft = this.remainingCards(hand1, hand2, [], deck);
     let fiveCardCombos = this.comboMaker(cardsLeft, 5);
     let winCount = 0;
     let loseCount = 0;
     let tieCount = 0;
-    fiveCardCombos.forEach(fiveCardCombo => {
-      switch (this.compareTwoHands(hand1, hand2, fiveCardCombo)) {
-        case 1:
-          winCount += 1;
-          break;
-        case (-1):
-          loseCount += 1;
-          break;
-        default:
-          tieCount += 1;
-          break;
+    let total = 0;
+    while (total < iterations) {
+      let randomIdx = Math.floor(Math.random()*fiveCardCombos.length);
+      total += 1;
+      switch (this.compareTwoHands(hand1, hand2, fiveCardCombos[randomIdx])){
+      // fiveCardCombos.forEach(fiveCardCombo => {
+      //   switch (this.compareTwoHands(hand1, hand2, fiveCardCombo)) {
+          case 1:
+            winCount += 1;
+            break;
+          case (-1):
+            loseCount += 1;
+            break;
+          default:
+            tieCount += 1;
+            break;
+      // })
       }
-    })
-    let total = fiveCardCombos.length
-    return [winCount / total, loseCount / total, tieCount / total]
+    }
+    total = fiveCardCombos.length;
+    return [winCount, loseCount, tieCount]
   }
   
 
@@ -397,13 +403,13 @@ class Calculator {
     let loseCount = 0;
     let tieCount = 0;
     range.forEach(hand2 => {
-      let outcome = this.preflopProp(hand1, hand2, deck);
+      let outcome = this.preflopProp(hand1, hand2, deck, 10000);
       winCount += outcome[0];
       loseCount += outcome[1];
       tieCount += outcome[2];
     })
     let total = winCount + loseCount + tieCount;
-    return [winCount / total, loseCount / total, tieCount / total];
+    return [winCount / total, loseCount / total, tieCount / total, total];
   }
 
   flopPropAgainstRange(hand1, range, communityCards, deck){
@@ -417,7 +423,7 @@ class Calculator {
       tieCount += outcome[2];
     })
     let total = winCount + loseCount + tieCount;
-    return [winCount / total, loseCount / total, tieCount / total];
+    return [winCount / total, loseCount / total, tieCount / total, total];
   }
 
 
@@ -447,7 +453,7 @@ class Calculator {
       tieCount += outcome[2];
     })
     let total = winCount + loseCount + tieCount;
-    return [winCount / total, loseCount / total, tieCount / total];
+    return [winCount / total, loseCount / total, tieCount / total, total];
   }
 
   getResult(hand1, range, communityCards, deck){
