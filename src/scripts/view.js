@@ -72,22 +72,48 @@ class View {
   }
 
   // to be refactored
-  setupRange(el){
+  setupRangeCards(el){
     const rangeCards = document.createElement("ul");
-    let rc1 = document.createElement("li");
-    rc1.className = "range-card";
-    rc1.dataset.pos = "range1";
-    rc1.dataset.fill = "empty";
-    rc1.id = "range1";
-    let rc2 = document.createElement("li");
-    rc2.className = "range-card"
-    rc2.dataset.pos = "range2";
-    rc2.dataset.fill = "empty";
-    rc2.id = "range2";
-    rangeCards.appendChild(rc1);
-    rangeCards.appendChild(rc2);
+    let range1 = document.createElement("li");
+    range1.className = "range-card";
+    range1.dataset.pos = "range1";
+    range1.dataset.fill = "empty";
+    range1.id = "range1";
+    let range2 = document.createElement("li");
+    range2.className = "range-card"
+    range2.dataset.pos = "range2";
+    range2.dataset.fill = "empty";
+    range2.id = "range2";
+    rangeCards.appendChild(range1);
+    rangeCards.appendChild(range2);
     el.append(rangeCards);
   }
+
+  setupRangeSelector(el){
+    // const rangeOptions = document.createElement("ul");
+
+    let highPairs = document.createElement("BUTTON");
+      highPairs.id = "high-pairs";
+      highPairs.innerHTML = "AsKs"
+    
+    let lowMidPairs = document.createElement("button");
+      lowMidPairs.id = "low-mid-pairs";
+      lowMidPairs.innerHTML = "Pocket Pairs";
+
+    let highSuitedConnects = document.createElement("button")
+      highSuitedConnects.id = "high-suited-connect";
+      highSuitedConnects.innerHTML = "High Suited Connectors";
+
+    [highPairs, lowMidPairs, highSuitedConnects].forEach(button => {
+      button.className = "range-selector";
+      button.dataset.selected = "no";
+      el.appendChild(button);
+    })
+
+    // el.appendChild(rangeOptions);
+  }
+
+
 
   updateResult(result){
     const resultDisplay = document.querySelector(".result-display")

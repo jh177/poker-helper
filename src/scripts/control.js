@@ -6,15 +6,25 @@ class Control{
     this.view = view;
     this.clickPos = this.clickPos.bind(this);
     this.clickList = this.clickList.bind(this);
+    this.clickButton = this.clickButton.bind(this);
+
+    this.listCards = new Deck();
     this.holeCards = [];
     this.boardCards = [];
-    this.range = [];
-    this.listCards = new Deck();
+    this.rangeCards = [];
     this.posToAddCard = "";
     this.cardToAdd = [];
     this.calculator = new Calculator();
     this.taken = [];
+    this.selectedButton = {};
+    // this.rangeCombos = [];
+
+    this.makeHighPairCombos();
+    this.makeLowMidPairCombos();
+    this.makeHighSuitedConnectCombos();
+
     this.bindPosEvents();
+    this.bindSelectButtonEvents();
     this.bindSimulateEvent();
   }
 
@@ -61,7 +71,7 @@ class Control{
     
     console.log(`hole cards: ${this.holeCards}`);
     console.log(`board cards: ${this.boardCards}`)
-    console.log(`range cards: ${this.range}`)
+    console.log(`range cards: ${this.rangeCards}`)
     
   }
 
@@ -89,6 +99,14 @@ class Control{
     if (posId === "river") {
       cardToAddBack = this.boardCards[4];
       this.boardCards = this.boardCards.slice(0, 4);
+    }
+    if (posId === "range1") {
+      cardToAddBack = this.rangeCards.shift();
+      // this.holeCards = this.holeCards.slice(1);
+    }
+    if (posId === "range2") {
+      cardToAddBack = this.rangeCards.pop();
+      // this.holeCards = this.holeCards.slice(0,1);
     }
     // pos.data.fill = "empty"
     console.log(cardToAddBack)
@@ -118,7 +136,7 @@ class Control{
   // }
 
 
-  //for click actions
+  //for click actions on listed cards
   bindListEvents() {
     let list = document.querySelectorAll(".listed-card");
     this.list = list;
@@ -189,14 +207,105 @@ class Control{
       this.boardCards = this.boardCards.slice(0, 3).concat([cardInfo], this.boardCards.slice(3))
     } else if (posId === "river") {
       this.boardCards.push(cardInfo);
-    } else if (posId.includes("range")) {
-      this.range.push(cardInfo);
+    } else if (posId==="range1") {
+      this.rangeCards.unshift(cardInfo);
+    } else if (posId === "range2") {
+      this.rangeCards.push(cardInfo);
     }
 
     let pos = document.querySelector(`#${this.posToAddCard}`);
     pos.dataset.fill = "filled"
   }
+  
 
+  // add click actions for range selector buttons
+  bindSelectButtonEvents() {
+    let buttons = document.querySelectorAll(".range-selector");
+    buttons.forEach(button => {
+        button.addEventListener('click', this.clickButton)
+    });
+  }
+
+  clickButton(event){
+    event.preventDefault();
+    let button = event.target;
+    let buttonId = button.id
+    
+    if (button.dataset.selected === "no"){
+      console.log("click to yes!")
+      let combos = this.makeCombos(buttonId);
+      this.selectedButton[buttonId] = combos;
+      button.dataset.selected ="yes";
+    } else {
+      console.log("click to no!")
+      this.selectedButton[buttonId] = [];
+      button.dataset.selected = "no";
+    }
+    this.updateComboNumber();
+  }
+
+  updateComboNumber(){
+    let ele = document.querySelector('.selected-range');
+    let sum = 0;
+    Object.values(this.selectedButton).forEach(arr => {
+      sum += arr.length;
+    })
+    let newInfo = `Selected Combos: ${sum}`;
+    ele.innerHTML = newInfo;
+  }
+
+  makeCombos(buttonId){
+    let combos = [];
+    if (buttonId === "high-pairs"){ combos = this.highPairCombos;}
+    if (buttonId === "low-mid-pairs"){ combos = this.lowMidPairCombos;}
+    if (buttonId === "high-suited-connect"){combos = this.highSuitedConnectCombos;}
+    return combos;
+  }
+
+  makeHighPairCombos(){
+    let vals = ["10", "J", "Q", "K", "A"];
+    let suits = ["diamond", "club", "heart", "spade"];
+    let result = [];
+    for (let v = 0; v < vals.length; v++) {
+      for (let i = 0; i < 3; i++) {
+        for (let j = 1; j < 4; j++) {
+          result.push([[suits[i], vals[v]], [suits[j], vals[v]]]);
+        }
+      }
+    }
+    this.highPairCombos = result;
+    return;
+  }
+
+  makeLowMidPairCombos(){
+    let vals = ["2", "3", "4", "5", "6", "7", "8", "9"];
+    let suits = ["diamond", "club", "heart", "spade"];
+    let result = [];
+    for (let v = 0; v < vals.length; v++) {
+      for (let i = 0; i < 3; i++) {
+        for (let j = 1; j < 4; j++) {
+          result.push([[suits[i], vals[v]], [suits[j], vals[v]]]);
+        }
+      }
+    }
+    this.lowMidPairCombos = result;
+    return;
+  }
+
+  makeHighSuitedConnectCombos() {
+    let vals = ["10", "J", "Q", "K", "A"];
+    let suits = ["diamond", "club", "heart", "spade"];
+    let result = [];
+    for (let s = 0; s < 4; s++) {
+      for (let i = 0; i < vals.length; i++) {
+        for (let j = 1; j < vals.length; j++) {
+          result.push([[suits[s], vals[i]], [suits[s], vals[j]]]);
+        }
+      }
+    }
+    this.highSuitedConnectCombos = result;
+    return;
+  }
 
 
 
@@ -223,8 +332,9 @@ class Control{
     let deck = new Deck();
     let hand1 = [];
     let communityCards = [];
-    let range = []
+    let finalRange = []
     
+
     this.holeCards.forEach(cardInfo => {
       hand1.push(deck.findCardByInfo(cardInfo));
     })
@@ -233,17 +343,25 @@ class Control{
       communityCards.push(deck.findCardByInfo(cardInfo));
     })
 
-    let rangeHand = [];
-    this.range.forEach(cardInfo => {
-      rangeHand.push(deck.findCardByInfo(cardInfo));
+    let rangeCombos = [];
+    Object.values(this.selectedButton).forEach(combos => {
+      rangeCombos = rangeCombos.concat(combos);
     })
-    range.push(rangeHand);
+    if (this.rangeCards.length >1) rangeCombos.push(this.rangeCards);
 
-    let result = this.calculator.getResult(hand1, range, communityCards, deck);
+    rangeCombos.forEach(combo => {
+      let rangeHand = [];
+      combo.forEach(cardInfo =>{
+        rangeHand.push(deck.findCardByInfo(cardInfo));
+      })
+      finalRange.push(rangeHand);
+    })
+
+    console.log(finalRange)
+
+    let result = this.calculator.getResult(hand1, finalRange, communityCards, deck);
     this.update(result);
   }
-
-  
 }
 
 

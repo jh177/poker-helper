@@ -19,15 +19,16 @@ document.addEventListener("DOMContentLoaded", ()=>{
   const holeCardsEl = document.querySelector(".hole-cards");
   view.setupHoleCards(holeCardsEl);
 
-  const rangeCardsEl = document.querySelector(".range");
-  view.setupRange(rangeCardsEl);
+  const rangeEl = document.querySelector(".range");
+  view.setupRangeCards(rangeEl);
+  view.setupRangeSelector(rangeEl);
 
   // let haha = document.querySelectorAll("li");
   // console.log(haha);
 
   const control = new Control(view);
   console.log(control.positions);
-  console.log(control.list)
+  // console.log(control.list)
   window.control = control;
 
   const deck = new Deck();
