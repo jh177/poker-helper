@@ -157,10 +157,10 @@ class View {
     const resultDisplay = document.querySelector(".result-display")
     resultDisplay.innerHTML = `<li>Win: ${(result[0]*100).toFixed(1)}%</li>
     <li>Lose: ${(result[1]*100).toFixed(1) }%</li>
-    <li>Tie: ${(result[2]*100).toFixed(1)}%</li>
-    <br>
-    <li>Total Number of Simulations: ${result[3]}</li>`
+    <li>Tie: ${(result[2]*100).toFixed(1)}%</li>`
+    // <li>Total Number of Simulations: ${result[3]}</li>
   }
+  
 }
 
 export default View;

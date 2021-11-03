@@ -276,8 +276,22 @@ class Control{
   updateComboNumber(){
     let ele = document.querySelector('.selected-range');
     let sum = 0;
+    let limit = [];
+    if (this.boardCards.length > 0){
+      this.boardCards.forEach(cardInfo => limit.push(cardInfo.join("")));
+    }
+    if(this.holeCards.length > 0) {
+      this.holeCards.forEach(cardInfo => limit.push(cardInfo.join("")));
+    }
     Object.values(this.selectedButton).forEach(arr => {
       sum += arr.length;
+      let subtract = 0;
+      arr.forEach(combo => {
+        if (limit.includes(combo[0].join("")) || limit.includes(combo[1].join(""))) {
+          subtract += 1;
+        }
+      })
+      sum -= subtract;
     })
     let newInfo = `Selected Combos: ${sum}`;
     ele.innerHTML = newInfo;
@@ -297,7 +311,7 @@ class Control{
     let result = [];
     for (let v = 0; v < vals.length; v++) {
       for (let i = 0; i < 3; i++) {
-        for (let j = 1; j < 4; j++) {
+        for (let j = i+1; j < 4; j++) {
           result.push([[suits[i], vals[v]], [suits[j], vals[v]]]);
         }
       }
@@ -312,7 +326,7 @@ class Control{
     let result = [];
     for (let v = 0; v < vals.length; v++) {
       for (let i = 0; i < 3; i++) {
-        for (let j = 1; j < 4; j++) {
+        for (let j = i+1; j < 4; j++) {
           result.push([[suits[i], vals[v]], [suits[j], vals[v]]]);
         }
       }
@@ -327,7 +341,7 @@ class Control{
     let result = [];
     for (let s = 0; s < 4; s++) {
       for (let i = 0; i < vals.length; i++) {
-        for (let j = 1; j < vals.length; j++) {
+        for (let j = i+1; j < vals.length; j++) {
           result.push([[suits[s], vals[i]], [suits[s], vals[j]]]);
         }
       }
@@ -363,30 +377,44 @@ class Control{
     let communityCards = [];
     let finalRange = []
     
-
+    
     this.holeCards.forEach(cardInfo => {
       hand1.push(deck.findCardByInfo(cardInfo));
     })
-
+    
     this.boardCards.forEach(cardInfo => {
       communityCards.push(deck.findCardByInfo(cardInfo));
     })
-
+    
     let rangeCombos = [];
     Object.values(this.selectedButton).forEach(combos => {
       rangeCombos = rangeCombos.concat(combos);
     })
     if (this.rangeCards.length >1) rangeCombos.push(this.rangeCards);
+    
+    let limit = [];
+    if (this.boardCards.length > 0) {
+      this.boardCards.forEach(cardInfo => limit.push(cardInfo.join("")));
+    }
+    if (this.holeCards.length > 0) {
+      this.holeCards.forEach(cardInfo => limit.push(cardInfo.join("")));
+    }
 
+    this.limit = limit;
+    this.rangeCombos = rangeCombos
     rangeCombos.forEach(combo => {
       let rangeHand = [];
-      combo.forEach(cardInfo =>{
-        rangeHand.push(deck.findCardByInfo(cardInfo));
-      })
-      finalRange.push(rangeHand);
+      if ((!limit.includes(combo[0].join(""))) && (!limit.includes(combo[1].join("")))){
+
+        combo.forEach(cardInfo =>{
+          rangeHand.push(deck.findCardByInfo(cardInfo));
+        })
+      }
+      if (rangeHand.length > 1) finalRange.push(rangeHand);
     })
 
-    console.log(finalRange)
+    this.final = finalRange;
+    console.log(`final: ${finalRange}`);
 
     let result = this.calculator.getResult(hand1, finalRange, communityCards, deck);
     this.update(result);
