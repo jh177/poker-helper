@@ -62,7 +62,7 @@ body {
   padding: 10px;
 }
 
-.side-cards > ul > li {
+.side-cards > ul > img {
   list-style-type: none;
   background: plum;
   width: 25px;
@@ -71,7 +71,13 @@ body {
   z-index: 1;
 }
 
-.side-cards > ul > li:hover {
+// .side-cards > ul li img{
+//   width: 20px;
+//   height: 30px;
+//   // z-index:1
+// }
+
+.side-cards > ul > img:hover {
   background: purple;
   cursor: pointer;
 }
@@ -82,7 +88,7 @@ body {
   display: flex;
 }
 
-.board-cards > ul > li {
+.board-cards > ul > img {
   list-style-type: none;
   background: plum;
   width: 40px;
@@ -92,7 +98,7 @@ body {
   z-index: 1;
 }
 
-.board-cards > ul > li:hover {
+.board-cards > ul > img:hover {
   background: purple;
   cursor: pointer;
 }
@@ -102,9 +108,16 @@ body {
   display: flex;
 }
 
-.hole-cards > ul > li {
-  list-style-type: none;
-  background: plum;
+// .hole-cards > ul > li {
+//   list-style-type: none;
+//   background: plum;
+//   width: 40px;
+//   height: 56px;
+//   margin: 0 5px 0 0;
+//   border: 1px solid black;
+//   z-index: 1;
+// }
+.hole-cards > ul > img {
   width: 40px;
   height: 56px;
   margin: 0 5px 0 0;
@@ -112,7 +125,7 @@ body {
   z-index: 1;
 }
 
-.hole-cards > ul > li:hover {
+.hole-cards > ul > img:hover {
   background: purple;
   cursor: pointer;
 }
@@ -122,9 +135,9 @@ body {
   display: flex;
 }
 
-.range > ul > li {
-  list-style-type: none;
-  background: plum;
+.range > ul > img {
+  // list-style-type: none;
+  // background: plum;
   width: 40px;
   height: 56px;
   margin: 0 5px 0 0;
@@ -132,7 +145,7 @@ body {
   z-index: 1;
 }
 
-.range > ul > li:hover {
+.range > ul > img:hover {
   background: purple;
   cursor: pointer;
 }

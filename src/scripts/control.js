@@ -111,6 +111,10 @@ class Control{
     // pos.data.fill = "empty"
     console.log(cardToAddBack)
     let card = document.querySelector(`#${cardToAddBack[0]}${cardToAddBack[1]}`);
+    
+    let imgNum = `${cardToAddBack[1]}${cardToAddBack[0][0].toUpperCase()}`;
+    card.src = `assets/images/cards/${imgNum}.svg`;
+    
     card.dataset.taken = "no";
   }
 
@@ -148,8 +152,13 @@ class Control{
         // pos.removeEventListener('click', that.clickList.bind(that));
       }
     });
+
+    let images = document.querySelectorAll(".card-image");
+    images.forEach(img =>{
+      img.addEventListener('click', event => event.stopPropagation());
+    })
+
     console.log("add list cards listeners!")
-    console.log(`taken cards ${this.taken}`)
   }
 
   removeListEvents(){
@@ -169,6 +178,8 @@ class Control{
     this.removeListEvents();
     this.addCardtoPos(card);
     card.dataset.taken = "yes";
+    card.src = "assets/images/cards/BLUE_BACK.svg";
+
     // console.log(`card to add: ${this.cardToAdd}`);
     // let that = this;
     // card.removeEventListener("click", this.clickList)
@@ -214,6 +225,10 @@ class Control{
     }
 
     let pos = document.querySelector(`#${this.posToAddCard}`);
+
+    let imgNum = `${cardVal}${cardSuit[0].toUpperCase()}`;
+    pos.src = `assets/images/cards/${imgNum}.svg`;
+
     pos.dataset.fill = "filled"
   }
   
