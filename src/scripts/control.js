@@ -402,8 +402,8 @@ class Control{
     let cardList = document.querySelector(".cards-sidebar")
     cardList.classList.add("highlight")
 
-    const resultDisplay = document.querySelector(".result-display")
-    resultDisplay.innerHTML = '<p font-size=16px>Loading...</p>';
+    const resultDisplay = document.querySelector(".result-display-lists");
+    resultDisplay.innerHTML = 'Loading...';
   }
 
   activatePickPosPrompt() {
@@ -416,8 +416,8 @@ class Control{
     let cardList = document.querySelector(".cards-sidebar")
     cardList.classList.remove("highlight")
 
-    const resultDisplay = document.querySelector(".result-display")
-    resultDisplay.innerHTML = '<p font-size=16px>Loading...</p>';
+    const resultDisplay = document.querySelector(".result-display-lists")
+    resultDisplay.innerHTML = 'Loading...';
   }
 
 
