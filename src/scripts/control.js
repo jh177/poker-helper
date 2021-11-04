@@ -379,7 +379,7 @@ class Control{
 
   activatePickPosPrompt() {
     let prompt1 = document.querySelector(".prompt-details")
-    prompt1.innerHTML = "<p>Pick another position or click Simulate!</p>";
+    prompt1.innerHTML = "<p>Pick another position or Ask Him!</p>";
 
     let cardList = document.querySelector(".cards-sidebar")
     cardList.classList.remove("highlight")
