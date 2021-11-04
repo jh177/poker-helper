@@ -11,14 +11,14 @@ class View {
     hc1.dataset.fill = "empty";
     hc1.className = "hc";
     hc1.id = "hole1";
-    hc1.src = "assets/images/cards/BLUE_BACK.svg";
+    hc1.src = "assets/images/cards/RED_BACK.svg";
 
     let hc2 = document.createElement("img");
     hc2.dataset.pos = "hole2";
     hc2.dataset.fill = "empty";
     hc2.className = "hc";
     hc2.id = "hole2";
-    hc2.src = "assets/images/cards/BLUE_BACK.svg";
+    hc2.src = "assets/images/cards/RED_BACK.svg";
 
     holeCards.appendChild(hc1);
     holeCards.appendChild(hc2);
@@ -49,7 +49,7 @@ class View {
       flopCard.dataset.fill = "empty";
       flopCard.className = "fc";
       flopCard.id = position;
-      flopCard.src = "assets/images/cards/BLUE_BACK.svg";
+      flopCard.src = "assets/images/cards/RED_BACK.svg";
       boardCards.appendChild(flopCard);
     }
 
@@ -58,7 +58,7 @@ class View {
     turnCard.dataset.fill = "empty";
     turnCard.className = "tc";
     turnCard.id = "turn";
-    turnCard.src = "assets/images/cards/BLUE_BACK.svg";
+    turnCard.src = "assets/images/cards/RED_BACK.svg";
 
 
     let riverCard = document.createElement("img");
@@ -66,7 +66,7 @@ class View {
     riverCard.dataset.fill = "empty";
     riverCard.className = "rc";
     riverCard.id = "river";
-    riverCard.src = "assets/images/cards/BLUE_BACK.svg";
+    riverCard.src = "assets/images/cards/RED_BACK.svg";
 
 
     boardCards.appendChild(turnCard);
@@ -122,14 +122,14 @@ class View {
     range1.dataset.pos = "range1";
     range1.dataset.fill = "empty";
     range1.id = "range1";
-    range1.src = "assets/images/cards/BLUE_BACK.svg";
+    range1.src = "assets/images/cards/RED_BACK.svg";
 
     let range2 = document.createElement("img");
     range2.className = "range-card"
     range2.dataset.pos = "range2";
     range2.dataset.fill = "empty";
     range2.id = "range2";
-    range2.src = "assets/images/cards/BLUE_BACK.svg";
+    range2.src = "assets/images/cards/RED_BACK.svg";
 
     rangeCards.appendChild(range1);
     rangeCards.appendChild(range2);
@@ -138,23 +138,24 @@ class View {
 
   setupRangeSelector(el){
     const rangeOptions = document.createElement("ul");
+    rangeOptions.className = "range-options"
 
-    let highPairs = document.createElement("BUTTON");
+    let highPairs = document.createElement("li");
       highPairs.id = "high-pairs";
-      highPairs.innerHTML = "Pair As, Ks, Q, Js, 10s"
+      highPairs.innerHTML = "High Pairs"
     
-    let lowMidPairs = document.createElement("button");
+    let lowMidPairs = document.createElement("li");
       lowMidPairs.id = "low-mid-pairs";
       lowMidPairs.innerHTML = "Pocket Pairs";
 
-    let highSuitedConnects = document.createElement("button")
+    let highSuitedConnects = document.createElement("li")
       highSuitedConnects.id = "high-suited-connect";
       highSuitedConnects.innerHTML = "High Suited Connectors";
 
-    [highPairs, lowMidPairs, highSuitedConnects].forEach(button => {
-      button.className = "range-selector";
-      button.dataset.selected = "no";
-      rangeOptions.appendChild(button);
+    [highPairs, lowMidPairs, highSuitedConnects].forEach(li => {
+      li.className = "range-selector";
+      li.dataset.selected = "no";
+      rangeOptions.appendChild(li);
     })
 
     el.appendChild(rangeOptions);
@@ -176,18 +177,18 @@ class View {
   // }
 
   updateResult(result){
-    const resultDisplay = document.querySelector(".result-display")
+    const resultDisplay = document.querySelector(".result-display-lists")
     resultDisplay.innerHTML = `<li>Win: ${(result[0]*100).toFixed(1)}%</li>
     <li>Lose: ${(result[1]*100).toFixed(1) }%</li>
-    <li>Split: ${(result[2]*100).toFixed(1)}%</li>
-    <li>Total Number of Simulations: ${result[3]}</li>`
+    <li>Split: ${(result[2]*100).toFixed(1)}%</li>`
+    // <li>Total Number of Simulations: ${result[3]}</li>
   }
   
   noResult(){
-    let prompt1 = document.querySelector(".prompt-details")
-    prompt1.innerHTML = "<p>Please select two cards or a range for your opponent!</p>";
+    let prompt = document.querySelector(".prompt-details")
+    prompt.innerHTML = "<p>Please select two cards or a range for your opponent!</p>";
 
-    const resultDisplay = document.querySelector(".result-display")
+    const resultDisplay = document.querySelector(".result-display-lists")
     resultDisplay.innerHTML = 'Oops! Not enough Info!';
   }
 

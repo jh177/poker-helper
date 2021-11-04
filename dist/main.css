@@ -17,40 +17,70 @@
   border-radius: 10px;
 }
 
+.wrapper * {
+  font-family: "Luckiest Guy", cursive;
+}
+
 .header {
-  background: chartreuse;
   height: 120px;
+  display: flex;
 }
 
 .footer {
-  background: cornflowerblue;
+  background: #5B9EA6;
   min-height: 40px;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+}
+
+.footer a {
+  text-align: center;
+  padding: 0 10px 0 0;
 }
 
 .cards-sidebar {
-  background: gold;
+  background: #F2C166;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-width: 240px;
+}
+
+.cards-sidebar.highlight {
+  background: green;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 240px;
+  color: white;
 }
 
 .content {
   text-align: left;
-  background: cyan;
+  background: #7EC8D9;
   min-height: 200px;
   font-size: 24px;
+  display: flex;
+  align-items: center;
 }
 
 .main-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+}
+
+.main-container p {
+  font-size: 30px;
+  font-weight: 500;
+  color: white;
 }
 
 .result {
-  background: green;
+  background: #BF2E21;
   display: flex;
   flex-direction: column;
   font-size: 24px;
@@ -88,11 +118,11 @@
 }
 @media all and (max-width: 800px) {
   .cards-sidebar {
-    order: 3;
+    order: 1;
   }
 
   .result {
-    order: 1;
+    order: 3;
   }
 
   .content {
@@ -103,6 +133,10 @@
     order: 4;
   }
 }
+.simulation.loading {
+  background: grey;
+}
+
 .side-cards > ul {
   display: flex;
   flex-wrap: wrap;
@@ -112,7 +146,7 @@
 }
 
 .side-cards > ul:hover {
-  background: chartreuse;
+  background: grey;
 }
 
 .side-cards > ul > img {
@@ -142,9 +176,33 @@
   display: flex;
 }
 
+.range-options {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.range-selector {
+  list-style-type: none;
+  padding: 5px;
+  margin: 5px;
+  background: #D9A0A0;
+  border: none;
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  display: inline-block;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.range-selector:hover {
+  -webkit-filter: brightness(120%);
+  transform: scale(1.2);
+}
+
 .selected-range > ul > img {
-  width: 50px;
-  height: 70px;
+  width: 60px;
+  height: 84px;
   margin: 0 5px 0 0;
   z-index: 1;
   border: 2px solid white;
@@ -153,6 +211,10 @@
 .selected-range > ul > img:hover {
   cursor: pointer;
   -webkit-filter: brightness(120%);
+}
+
+.range-selector.selected {
+  background: #793c11;
 }
 
 .range-selector:hover {
@@ -168,8 +230,8 @@
 }
 
 .board-cards > ul > img {
-  width: 50px;
-  height: 70px;
+  width: 60px;
+  height: 84px;
   margin: 0 5px 0 0;
   border: 2px solid white;
   z-index: 1;
@@ -189,8 +251,8 @@
 }
 
 .hole-cards > ul > img {
-  width: 50px;
-  height: 70px;
+  width: 60px;
+  height: 84px;
   margin: 0 5px 0 0;
   border: 2px solid white;
   z-index: 1;
@@ -227,11 +289,10 @@
 }
 
 .prompt {
-  font-size: 20px;
+  font-size: 24px;
   text-align: left;
-  border: 1px solid blue;
   border-radius: 10px;
-  background: white;
+  background: lightcyan;
   flex-basis: 150px;
   display: flex;
   justify-content: center;
@@ -241,16 +302,35 @@
 .prompt-details {
   margin: auto;
   width: 90%;
-  background: white;
+}
+
+.strange {
+  display: flex;
+}
+
+.strange > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.strange-img {
+  flex-basis: 100px;
+}
+
+.strange div:last-child {
+  flex-grow: 1;
+}
+
+.strange > div > img {
+  width: 100%;
 }
 
 .result-display {
-  font-size: 20px;
+  font-size: 24px;
   text-align: left;
-  border: 1px solid blue;
   border-radius: 10px;
-  background: white;
-  flex-basis: 150px;
+  background: lightcyan;
+  flex-basis: 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -261,11 +341,49 @@
   list-style-type: none;
 }
 
-.card-info {
-  font-size: medium;
+.result > p {
+  margin-bottom: 5px;
+  font-size: 30px;
+  font-weight: 700px;
+  color: white;
 }
 
-.card-info-prompt {
-  font-size: larger;
-  font-weight: bolder;
+.card-info {
+  margin-top: 10px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.result button {
+  color: white;
+  height: 33%;
+  width: 67%;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 8px;
+  background: #F2C166;
+  border: none;
+  margin: auto;
+  font-size: 20px;
+  font-weight: 700px;
+}
+
+.result button:active {
+  background-color: #F2C166;
+  box-shadow: 0 5px darkgoldenrod;
+  transform: translateY(4px);
+}
+
+#simulation:hover {
+  cursor: pointer;
+  -webkit-filter: brightness(120%);
+}
+
+#reset-button {
+  background: #F2C166;
+}
+
+#reset-button:hover {
+  cursor: pointer;
+  -webkit-filter: brightness(80%);
 }

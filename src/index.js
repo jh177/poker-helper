@@ -103,5 +103,4 @@ document.addEventListener("DOMContentLoaded", ()=>{
   // window.hand1 = hand1;
   // window.hand2 = hand2;
 
-  
 });

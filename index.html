@@ -4,7 +4,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <link rel="stylesheet" href="./src/css_reset.scss" /> -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+  href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&family=Luckiest+Guy&family=Press+Start+2P&display=swap"
+  rel="stylesheet">
+  <link rel="stylesheet" href="./src/css_reset.scss" />
   <link rel="stylesheet" href="./dist/main.css" />
   <script src="./dist/main.js"></script>
   <title>Poker Helper</title>
@@ -14,7 +19,7 @@
   <div class="wrapper">
     <header class="top-header">
       <!-- <h1 class="main-title">Guardian of the Chips</h1> -->
-      <img src="https://fontmeme.com/permalink/211103/c226884eb0e9208f9b63217ae32ae272.png" alt="guardian-of-the-chip" id="main-logo">
+      <img src="https://fontmeme.com/permalink/211104/b67e5650c3597d0215dedd00402b99f8.png" alt="guardian-of-the-chip" id="main-logo">
     </header>
     
     <aside class="cards-sidebar">
@@ -26,7 +31,7 @@
 
     <section class="main-container">
       <div class="range">
-        <p class="range-info">Please select a range combo:</p>
+        <p class="range-info">Pick two cards or select range combos:</p>
         <div class="selected-range"></div>
       </div>
       <div class="board-cards">
@@ -43,35 +48,38 @@
   <aside class="result">
 
     <div class="prompt">
-      <p class="prompt-details">Welcome!</p>
+      <p class="prompt-details">Pick a card position to start</p>
     </div>
 
     <p>Result</p>
     <div class="result-display">
-
+      <div class="result-display-lists"></div>
     </div>
 
     <br>
-  
-    <!-- <div class="spinner-wrapper">
-      <img src="assets/images/loading.gif" alt="" class="spinner-hidden">
-    </div> -->
-  
-    <!-- <button class="get-ready">???</button> -->
-    <button class="simulation" id="simulation">Simulate</button>
-    <button class="reset-button" type="reset" onclick="document.location.reload()">Reset</button>
+
+    <div class="strange">
+      <div class="strange-img">
+        <img src="assets/dr_strange.png" alt="">
+      </div>
+
+      <div>
+        <button class="simulation" id="simulation">Ask Him</button>
+        <button id="reset-button" type="reset" onclick="document.location.reload()">Reset</button>
+      </div>
+    </div>
   </aside>
 
   <footer class="footer">
     <a href="https://github.com/jh177">
-      Github
       <img src="assets/images/logo/GitHub-Mark-120px-plus.png" alt="GitHub" id="github-logo">
+      Github
     </a>
 
     <a href="https://www.linkedin.com/in/zjhong/">
-      LinkedIn
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/768px-LinkedIn_logo_initials.png"
       alt="LinkedIn" id="linkedin-logo">
+      LinkedIn
     </a>
 
   </footer>
