@@ -206,11 +206,14 @@ $color6: #280283;
   color: $color4;
   font-size: 20px;
   text-align: center;
-  display: inline-block;
-  white-space: normal;
-  word-wrap: break-word;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   border-radius: 5px;
   outline: 2px solid $color4;
+  width: 33%;
+  height: 40%
 }
 
 .range-selector:hover{
@@ -392,7 +395,7 @@ $color6: #280283;
 .result button{
   color:black;
   height: 33%;
-  width: 67%;  
+  width: 75%;  
   padding: 5px;
   margin: 5px;
   border-radius: 8px;

@@ -307,71 +307,74 @@ class Control{
     // let spinner = document.querySelector(".spinner-hidden");
     // spinner.className = "spinner";
 
-    // event.target.innerHTML = "Loading"
-    this.outcomes();
-    // event.target.innerHTML = "Ask Him"
+    let target = event.target;
+    // target.innerHTML = "Loading"
+    this.outcomes(target);
   }
 
-  outcomes(){
+  outcomes(target){
 
-    let deck = new Deck();
-    let hand1 = [];
-    let communityCards = [];
-    let finalRange = []
-    
-    
-    this.holeCards.forEach(cardInfo => {
-      hand1.push(deck.findCardByInfo(cardInfo));
-    })
-    
-    this.boardCards.forEach(cardInfo => {
-      communityCards.push(deck.findCardByInfo(cardInfo));
-    })
-    
-    let rangeCombos = [];
-    Object.values(this.selectedButton).forEach(combos => {
-      rangeCombos = rangeCombos.concat(combos);
-    })
-    if (this.rangeCards.length >1) rangeCombos.push(this.rangeCards);
-    
-    let limit = [];
-    if (this.boardCards.length > 0) {
-      this.boardCards.forEach(cardInfo => limit.push(cardInfo.join("")));
-    }
-    if (this.holeCards.length > 0) {
-      this.holeCards.forEach(cardInfo => limit.push(cardInfo.join("")));
-    }
+    setTimeout(()=>{
 
-    rangeCombos.forEach(combo => {
-      let rangeHand = [];
-      if ((!limit.includes(combo[0].join(""))) && (!limit.includes(combo[1].join("")))){
-
-        combo.forEach(cardInfo =>{
-          rangeHand.push(deck.findCardByInfo(cardInfo));
-        })
+      let deck = new Deck();
+      let hand1 = [];
+      let communityCards = [];
+      let finalRange = []
+      
+      
+      this.holeCards.forEach(cardInfo => {
+        hand1.push(deck.findCardByInfo(cardInfo));
+      })
+      
+      this.boardCards.forEach(cardInfo => {
+        communityCards.push(deck.findCardByInfo(cardInfo));
+      })
+      
+      let rangeCombos = [];
+      Object.values(this.selectedButton).forEach(combos => {
+        rangeCombos = rangeCombos.concat(combos);
+      })
+      if (this.rangeCards.length >1) rangeCombos.push(this.rangeCards);
+      
+      let limit = [];
+      if (this.boardCards.length > 0) {
+        this.boardCards.forEach(cardInfo => limit.push(cardInfo.join("")));
       }
-      if (rangeHand.length > 1) finalRange.push(rangeHand);
-    })
+      if (this.holeCards.length > 0) {
+        this.holeCards.forEach(cardInfo => limit.push(cardInfo.join("")));
+      }
 
-    let result = this.calculator.getResult(hand1, finalRange, communityCards, deck);
-    if(result[3] === 0) {
-      this.view.noResult();
-    } else {
-      this.view.updateResult(result);
-    }
+      rangeCombos.forEach(combo => {
+        let rangeHand = [];
+        if ((!limit.includes(combo[0].join(""))) && (!limit.includes(combo[1].join("")))){
+
+          combo.forEach(cardInfo =>{
+            rangeHand.push(deck.findCardByInfo(cardInfo));
+          })
+        }
+        if (rangeHand.length > 1) finalRange.push(rangeHand);
+      })
+
+      let result = this.calculator.getResult(hand1, finalRange, communityCards, deck);
+      if(result[3] === 0) {
+        this.view.noResult();
+      } else {
+        this.view.updateResult(result);
+      }
+
+      target.innerHTML = "Ask Him";
+
+    }, 1);
+    target.innerHTML = "Loading";
   }
 
   // prompts activators
-
   activatePickCardPrompt() {
     let prompt1 = document.querySelector(".prompt-details")
     prompt1.innerHTML = "<p>Pick a card from the available cards!</p>";
 
     let cardList = document.querySelector(".cards-sidebar")
     cardList.classList.add("highlight")
-
-    const resultDisplay = document.querySelector(".result-display-lists");
-    resultDisplay.innerHTML = 'Loading...';
   }
 
   activatePickPosPrompt() {
@@ -380,12 +383,7 @@ class Control{
 
     let cardList = document.querySelector(".cards-sidebar")
     cardList.classList.remove("highlight")
-
-    const resultDisplay = document.querySelector(".result-display-lists")
-    resultDisplay.innerHTML = 'Loading...';
   }
-
-
 }
 
 
