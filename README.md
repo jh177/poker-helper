@@ -1,6 +1,6 @@
 # Guardian of the Chips -- The Poker Helper
 
-Live: https://jh177.github.io/poker-helper/
+[Live](https://jh177.github.io/poker-helper/)
 
 ## Background
 
