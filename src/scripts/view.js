@@ -1,10 +1,14 @@
 class View {
   constructor(){
-    // this.clickCard = this.clickCard.bind(this);
-    // this.bindPosEvents();
+    this.setupHoleCards();
+    this.setupBoardCards();
+    this.setupSideCards();
+    this.setupRangeCards();
+    this.setupRangeSelector();
   }
 
-  setupHoleCards(el){
+  setupHoleCards(){
+    const holeCardsEl = document.querySelector(".hole-cards");
     const holeCards = document.createElement("ul");
     let hc1 = document.createElement("img");
     hc1.dataset.pos = "hole1";
@@ -22,24 +26,11 @@ class View {
 
     holeCards.appendChild(hc1);
     holeCards.appendChild(hc2);
-    el.append(holeCards);
-    // let hc1 = document.createElement("li");
-    // hc1.dataset.pos = "hole1";
-    // hc1.dataset.fill = "empty";
-    // hc1.className = "hc";
-    // hc1.id = "hole1";
-    // let hc2 = document.createElement("li");
-    // hc2.dataset.pos = "hole2";
-    // hc2.dataset.fill = "empty";
-    // hc2.className = "hc";
-    // hc2.id = "hole2";
-    // holeCards.appendChild(hc1);
-    // holeCards.appendChild(hc2);
-    // el.append(holeCards);
-    // 
+    holeCardsEl.append(holeCards); 
   }
 
-  setupBoardCards(el){
+  setupBoardCards(){
+    const boardCardsEl = document.querySelector(".board-cards");
     const boardCards = document.createElement("ul");
 
     for(let i=0; i<3; i++){
@@ -72,10 +63,11 @@ class View {
     boardCards.appendChild(turnCard);
     boardCards.appendChild(riverCard);
 
-    el.appendChild(boardCards);
+    boardCardsEl.appendChild(boardCards);
   }
 
-  setupSideCards(el){
+  setupSideCards(){
+    const sideCardsEl = document.querySelector(".side-cards");
     const values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
     // const suits = ["diamond", "club", "heart", "spade" ];
     
@@ -93,10 +85,10 @@ class View {
     this.makeSideCards(values, heart, "heart");
     this.makeSideCards(values, spade, "spade");
 
-    el.appendChild(diamond);
-    el.appendChild(club);
-    el.appendChild(heart);
-    el.appendChild(spade);
+    sideCardsEl.appendChild(diamond);
+    sideCardsEl.appendChild(club);
+    sideCardsEl.appendChild(heart);
+    sideCardsEl.appendChild(spade);
 
   }
 
@@ -115,7 +107,8 @@ class View {
   }
 
   // to be refactored
-  setupRangeCards(el){
+  setupRangeCards(){
+    const rangeEl = document.querySelector(".selected-range");
     const rangeCards = document.createElement("ul");
     let range1 = document.createElement("img");
     range1.className = "range-card";
@@ -133,10 +126,11 @@ class View {
 
     rangeCards.appendChild(range1);
     rangeCards.appendChild(range2);
-    el.append(rangeCards);
+    rangeEl.append(rangeCards);
   }
 
-  setupRangeSelector(el){
+  setupRangeSelector(){
+    const rangeEl1 = document.querySelector(".selected-range");
     const rangeOptions = document.createElement("ul");
     rangeOptions.className = "range-options"
 
@@ -158,23 +152,8 @@ class View {
       rangeOptions.appendChild(li);
     })
 
-    el.appendChild(rangeOptions);
+    rangeEl1.appendChild(rangeOptions);
   }
-
-
-  // addSpinner(){
-  //   const spinnerWrapper = document.querySelector(".spinner-wrapper");
-  //   let spinner = document.createElement("img");
-  //   spinner.src = "assets/images/loading.gif";
-  //   spinner.className = "spinner";
-  //   spinnerWrapper.appendChild(spinner);
-  // }
-
-  // removeSpinner(){
-  //   const spinnerWrapper = document.querySelector(".spinner-wrapper");
-  //   let spinner = document.querySelector(".spinner");
-  //   spinnerWrapper.removeChild(spinner);
-  // }
 
   updateResult(result){
     const resultDisplay = document.querySelector(".result-display-lists")

@@ -16,21 +16,8 @@ const VALUES = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"
 
 class Calculator {
   constructor(){
-    // this.holeCards = round.holeCards;
-    // this.communityCards = round.communityCards;
-    // this.opponentRange = round.opponentRange;
   }
 
-  
-  // function to get all the five card combos out of two hole cards plus 5 board cards
-  // fiveCardCombos(hand, boardCards){
-  //   let cards = hand.concat(boardCards);
-  //   let combos = this.comboMaker(cards, 5);
-  //   return combos;
-  // }
-
-  // main function to get hand strength of any five cards
-  // handStrength(fiveCards){
   handStrength(sevenCards){
     let handValues = this.sortHandValues(sevenCards.map(card => card.value));
     let uniqVals = this.uniqValues(handValues)

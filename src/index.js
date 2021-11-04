@@ -1,33 +1,29 @@
-import Card from "./scripts/card.js"
-import Deck from "./scripts/deck.js"
-import Calculator from "./scripts/calculator.js"
 import View from "./scripts/view.js";
 import Control from "./scripts/control.js";
+// import Card from "./scripts/card.js"
+// import Deck from "./scripts/deck.js"
+// import Calculator from "./scripts/calculator.js"
 
 document.addEventListener("DOMContentLoaded", ()=>{
-//   console.log("hi");
-//   const main = document.getElementById("main-container");
-//   new Test(main)
   const view = new View();
-
-  const sideCardsEl = document.querySelector(".side-cards");
-  view.setupSideCards(sideCardsEl);
-
-  const boardCardsEl = document.querySelector(".board-cards");
-  view.setupBoardCards(boardCardsEl);
-
-  const holeCardsEl = document.querySelector(".hole-cards");
-  view.setupHoleCards(holeCardsEl);
-
-  const rangeEl = document.querySelector(".selected-range");
-  view.setupRangeCards(rangeEl);
-  view.setupRangeSelector(rangeEl);
-
   const control = new Control(view);
   window.control = control;
+  
+  
+  //for testing
+  // const sideCardsEl = document.querySelector(".side-cards");
+  // view.setupSideCards(sideCardsEl);
 
+  // const boardCardsEl = document.querySelector(".board-cards");
+  // view.setupBoardCards(boardCardsEl);
 
+  // const holeCardsEl = document.querySelector(".hole-cards");
+  // view.setupHoleCards(holeCardsEl);
 
+  // const rangeEl = document.querySelector(".selected-range");
+  // view.setupRangeCards(rangeEl);
+  // view.setupRangeSelector(rangeEl);
+  
   // const deck = new Deck();
   // // console.log(deck);
   // window.deck = deck;
@@ -36,8 +32,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
   // console.log(calculator);
   // window.calculator = calculator;
 
-
-  //for testing
   // let c1 = new Card("K", "diamond");
   // let c2 = new Card("A", "club");
 
@@ -58,18 +52,15 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
   // const h1 = [c1, c2, d1, d2, d3, d4, d5];
   // const h2 = [c3, c4, d1, d2, d3, d4, d5]
-  // // const board1 = [d1, d2, d3, d4, d5];
+  // const board1 = [d1, d2, d3, d4, d5];
   // const hand1 = [c1, c2];
   // const hand2 = [c3, c4]
   // const range1 = [[c3, c4], [c5, c6], [c7, c8], [c5, c7]]
-  // // console.log(hand1);
-  // // console.log(hand2);
-  // // console.log(board1);
+  
   // window.range1 = range1;
   // window.h1 = h1;
   // window.h2 = h2;
   // window.board1 = board1;
   // window.hand1 = hand1;
   // window.hand2 = hand2;
-
 });

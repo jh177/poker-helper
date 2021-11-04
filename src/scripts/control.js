@@ -33,7 +33,6 @@ class Control{
   bindPosEvents() {
     let positions = document.querySelectorAll(".hc, .fc, .tc, .rc, .range-card");
     this.positions = positions;
-    // positions.forEach(pos=> pos.className += "haha");
     positions.forEach(pos=>{
         pos.addEventListener('click', this.clickPos);
     });
@@ -78,14 +77,11 @@ class Control{
 
   removeCardFromPos(posId){
     let cardToAddBack;
-    // console.log(this.holeCards)
     if (posId === "hole1") {
       cardToAddBack = this.holeCards.shift();
-      // this.holeCards = this.holeCards.slice(1);
     }
     if (posId === "hole2") {
       cardToAddBack = this.holeCards.pop();
-      // this.holeCards = this.holeCards.slice(0,1);
     }
     for (let i=1; i<=3; i++){
       if (posId === `flop${i}`) {
@@ -103,14 +99,10 @@ class Control{
     }
     if (posId === "range1") {
       cardToAddBack = this.rangeCards.shift();
-      // this.holeCards = this.holeCards.slice(1);
     }
     if (posId === "range2") {
       cardToAddBack = this.rangeCards.pop();
-      // this.holeCards = this.holeCards.slice(0,1);
     }
-    // pos.data.fill = "empty"
-    console.log(cardToAddBack)
     let card = document.querySelector(`#${cardToAddBack[0]}${cardToAddBack[1]}`);
     
     let imgNum = `${cardToAddBack[1]}${cardToAddBack[0][0].toUpperCase()}`;
@@ -124,19 +116,10 @@ class Control{
     let list = document.querySelectorAll(".listed-card");
     this.list = list;
     list.forEach(pos => {
-      // let that = this;
-      // pos.dataset.clickCount = "0";
       if (pos.dataset.taken === "no"){
         pos.addEventListener('click', this.clickList)
       }
     });
-
-    // let images = document.querySelectorAll(".card-image");
-    // images.forEach(img =>{
-    //   img.addEventListener('click', event => event.stopPropagation());
-    // })
-
-    console.log("add list cards listeners!")
   }
 
   removeListEvents(){
@@ -145,7 +128,6 @@ class Control{
     toBeRemovedCard.forEach(pos => {
       pos.removeEventListener('click', this.clickList);
     })
-    console.log("removed list cards listeners!")
   }
 
   clickList(event) {
@@ -162,14 +144,11 @@ class Control{
   addCardtoPos(card){
     let cardSuit = card.dataset.suit
     let cardVal = card.dataset.value
-    
-    console.log(cardVal, cardSuit);
-    
+        
     let cardInfo = [cardSuit, cardVal];
     this.taken.push(cardInfo);
 
     let posId = this.posToAddCard
-    // console.log(posId)
     if (posId === "hole1") {
       this.holeCards.unshift(cardInfo);
     } else if (posId === "hole2") {
@@ -198,7 +177,6 @@ class Control{
     pos.dataset.fill = "filled";
   }
   
-
   // add click actions for range selector buttons
   bindSelectButtonEvents() {
     let buttons = document.querySelectorAll(".range-selector");
@@ -261,7 +239,7 @@ class Control{
       })
       sum -= subtract;
     })
-    let newInfo = `Selected ${sum} combos`;
+    let newInfo = `Selected ${sum} hands`;
     ele.innerHTML = newInfo;
   }
 
@@ -318,7 +296,6 @@ class Control{
     return;
   }
 
-
   // add click action to simulation button
   bindSimulateEvent() {
     let simulate = document.getElementById("simulation");
@@ -327,18 +304,13 @@ class Control{
   }
 
   clickSimulate(event) {
-    // let spinner = document.querySelector(".spinner-hidden")
+    // let spinner = document.querySelector(".spinner-hidden");
     // spinner.className = "spinner";
 
-    // event.currentTarget.classList.add("loading");
+    // event.target.innerHTML = "Loading"
     this.outcomes();
-
+    // event.target.innerHTML = "Ask Him"
   }
-
-  // update(result) {
-  //   this.view.updateResult(result);
-  // }
-
 
   outcomes(){
 
@@ -370,7 +342,6 @@ class Control{
       this.holeCards.forEach(cardInfo => limit.push(cardInfo.join("")));
     }
 
-
     rangeCombos.forEach(combo => {
       let rangeHand = [];
       if ((!limit.includes(combo[0].join(""))) && (!limit.includes(combo[1].join("")))){
@@ -396,9 +367,6 @@ class Control{
     let prompt1 = document.querySelector(".prompt-details")
     prompt1.innerHTML = "<p>Pick a card from the available cards!</p>";
 
-    // let prompt2 = document.querySelector(".card-info")
-    // prompt2.className = "card-info-prompt";
-
     let cardList = document.querySelector(".cards-sidebar")
     cardList.classList.add("highlight")
 
@@ -409,9 +377,6 @@ class Control{
   activatePickPosPrompt() {
     let prompt1 = document.querySelector(".prompt-details")
     prompt1.innerHTML = "<p>Pick another position or click Simulate!</p>";
-
-    // let prompt2 = document.querySelector(".card-info-prompt")
-    // prompt2.className = "card-info";
 
     let cardList = document.querySelector(".cards-sidebar")
     cardList.classList.remove("highlight")
