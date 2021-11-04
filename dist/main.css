@@ -388,3 +388,37 @@
   cursor: pointer;
   -webkit-filter: brightness(80%);
 }
+
+.about {
+  position: relative;
+  padding: 0 10px 0 0;
+}
+
+.about-details {
+  position: absolute;
+  display: none;
+  border: 3px solid black;
+  border-radius: 10px;
+}
+
+.about-details p {
+  padding: 5px;
+  font-family: "Josefin Sans", sans-serif;
+  color: black;
+  font-size: 16px;
+}
+
+.about:hover {
+  cursor: pointer;
+}
+
+.about:hover .about-details {
+  text-align: left;
+  display: block;
+  width: 400px;
+  background: #D9A0A0;
+  z-index: 1;
+  bottom: 100%;
+  right: 100%;
+  -webkit-filter: brightness(120%);
+}

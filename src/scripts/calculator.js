@@ -95,6 +95,7 @@ class Calculator {
         kicker = threeVals.shift();
         three = threeVals[0];
       } else {
+        three = threeVals[0];
         for(let i=kickers.length-1; i>=0; i--){
           if (kickers[i] !== three) {
             kicker = kickers[i];
