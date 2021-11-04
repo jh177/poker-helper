@@ -1,0 +1,259 @@
+@import "./styles/test.scss";
+
+body {
+  // position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  width: 900px;  
+}
+
+
+
+header{
+  margin: auto;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#main-logo{
+  max-height: 60%;
+  max-width: 60%;
+  // margin: auto;
+
+}
+
+.content {
+  display: flex;
+  // flex-wrap: wrap;
+  margin: auto;
+  background: lightgray;
+  width: 900px;
+  z-index: 1;
+  // height: 400px;
+}
+
+.content p{
+  text-align: center;
+}
+
+.cards-sidebar{
+  width: 150px;
+  min-height: 200px;
+  border-right: 1px solid black;
+  margin: 0 10px 0 0;
+  z-index:1;
+}
+
+.main-container {
+  width: 580px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  z-index: 1;
+}
+
+.result {
+  width: 150px;
+  min-height: 200px;
+  border: 0 0 0 10px;
+  border-left: 1px solid black;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  // justify-content: space-between;
+}
+
+.side-cards > ul{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.side-cards > ul > img {
+  // list-style-type: none;
+  background: plum;
+  width: 25px;
+  height: 35px;
+  margin: 0 2px 5px 2px;
+  z-index: 1;
+}
+
+// .side-cards > ul li img{
+//   width: 20px;
+//   height: 30px;
+//   // z-index:1
+// }
+
+.side-cards > ul > img:hover {
+  background: purple;
+  cursor: pointer;
+}
+
+
+
+.board-cards > ul{
+  display: flex;
+}
+
+.board-cards > ul > img {
+  // list-style-type: none;
+  background: plum;
+  width: 40px;
+  height: 56px;
+  margin: 0 5px 0 0;
+  border: 1px solid black;
+  z-index: 1;
+}
+
+.board-cards > ul > img:hover {
+  background: purple;
+  cursor: pointer;
+}
+
+
+.hole-cards > ul{
+  display: flex;
+}
+
+// .hole-cards > ul > li {
+//   list-style-type: none;
+//   background: plum;
+//   width: 40px;
+//   height: 56px;
+//   margin: 0 5px 0 0;
+//   border: 1px solid black;
+//   z-index: 1;
+// }
+.hole-cards > ul > img {
+  width: 40px;
+  height: 56px;
+  margin: 0 5px 0 0;
+  border: 1px solid black;
+  z-index: 1;
+}
+
+.hole-cards > ul > img:hover {
+  background: purple;
+  cursor: pointer;
+}
+
+
+.range > ul{
+  display: flex;
+}
+
+.range > ul > img {
+  // list-style-type: none;
+  // background: plum;
+  width: 40px;
+  height: 56px;
+  margin: 0 5px 0 0;
+  // border: 1px solid black;
+  z-index: 1;
+}
+
+.range > ul > img:hover {
+  background: purple;
+  cursor: pointer;
+}
+
+
+.result-display>li{
+  list-style-type: none;
+  text-align: center;
+  margin: auto 0;
+}
+
+.simulation:hover {
+  background: gold;
+  cursor: pointer;
+}
+
+.reset-button:hover {
+  background: gold;
+  cursor: pointer;
+}
+
+// .main-container {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: space-between;
+//   // height: 100%;
+//   // width: 100%;
+//   // color:$blue;
+//   position: relative;
+//   z-index: 1;
+//   // border: 1px solid black;
+//   // background-color:blue;
+// }
+
+// .range{
+//   z-index: 1
+// }
+
+// button {
+//   color:red;
+//   // z-index: 2;
+//   // position: absolute;
+//   // top: 300px;
+//   // left: 300px;
+//   z-index: 1;
+// }
+
+// #poker-table {
+//   border: 1px, solid, black;
+// }
+
+footer {
+  border: 1px solid black;
+  width: 900px;
+  min-height: 50px;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  // justify-content: space-evenly;
+  align-items: center;
+  // position: absolute;
+  // position:fixed;
+  // bottom: 0;
+}
+
+#linkedin-logo{
+  width: 20px;
+  height: 20px;
+}
+
+#github-logo{
+  width: 20px;
+  height: 20px;
+}
+
+.spinner-wrapper{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner-hidden{
+  width: 40px;
+  height: 40px;
+  display: none;
+}
+
+.spinner{
+  width: 40px;
+  height: 40px;
+}
+
+
+// .canvas-container {
+//   position: absolute;
+//   z-index: 0;
+//   // background: blue;
+// }

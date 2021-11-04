@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
   const holeCardsEl = document.querySelector(".hole-cards");
   view.setupHoleCards(holeCardsEl);
 
-  const rangeEl = document.querySelector(".range");
+  const rangeEl = document.querySelector(".selected-range");
   view.setupRangeCards(rangeEl);
   view.setupRangeSelector(rangeEl);
 
@@ -29,6 +29,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
   // console.log(control.positions);
   // console.log(control.list)
   window.control = control;
+
+
 
   // const deck = new Deck();
   // // console.log(deck);

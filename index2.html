@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="./src/css_reset.scss" /> -->
+  <link rel="stylesheet" href="./dist/main.css" />
+  <script src="./dist/main.js"></script>
+  <title>Poker Helper</title>
+</head>
+
+<body>
+  <div class="wrapper">
+  <header class="top-header">
+    <!-- <h1 class="main-title">Guardian of the Chips</h1> -->
+    <img src="https://fontmeme.com/permalink/211103/c226884eb0e9208f9b63217ae32ae272.png" alt="guardian-of-the-chip" id="main-logo">
+  </header>
+  
+  <!-- <div class="canvas-container">
+    <canvas id="main-canvas"></canvas>
+  </div> -->
+
+  <main class="content">
+
+    <section class="cards-sidebar">
+      <p>Cards</p>
+      <div class="side-cards"></div>
+    </section>
+    
+    <section class="main-container">
+
+      <div class="range">
+        <p>Range</p>
+        <p class="selected-range">Selected:</p>
+      </div>
+      <div class="board-cards">
+        <p>Board</p>
+      </div>
+      <div class="hole-cards">
+        <p>Hole Cards</p>
+      </div>
+
+    </section>
+
+    <section class="result">
+      <div class="range-selection">
+        <p>Range Selection</p>
+      
+      </div>
+      <p>Result</p>
+      <div class="result-display">
+      </div>
+      
+      <div class="spinner-wrapper">
+        <img src="assets/images/loading.gif" alt="" class="spinner-hidden">
+      </div>
+
+      <button class="get-ready">???</button>
+      <button class="simulation">Simulate</button>
+      <button class="reset-button" type="reset" onclick="document.location.reload()">Reset</button>
+    </section>
+  </main>
+
+  <footer>
+    <a href="https://github.com/jh177">
+      <img src="assets/images/logo/GitHub-Mark-120px-plus.png" alt="GitHub" id="github-logo">
+    </a>
+
+    <a href="https://www.linkedin.com/in/zjhong/">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/768px-LinkedIn_logo_initials.png"
+      alt="LinkedIn" id="linkedin-logo">
+    </a>
+
+  </footer>
+
+  </div>
+</body>
+</html>

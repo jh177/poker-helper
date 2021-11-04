@@ -77,32 +77,41 @@ class View {
 
   setupSideCards(el){
     const values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
-    const suits = ["diamond", "club", "heart", "spade" ];
-    const sideCards = document.createElement("ul");
+    // const suits = ["diamond", "club", "heart", "spade" ];
+    
+    const diamond = document.createElement("ul");
+    diamond.className = "diamond";
+    const club = document.createElement("ul");
+    club.className = "club";
+    const heart = document.createElement("ul");
+    heart.className = "heart";
+    const spade = document.createElement("ul");
+    spade.className = "spade;"
 
+    this.makeSideCards(values, diamond, "diamond");
+    this.makeSideCards(values, club, "club");
+    this.makeSideCards(values, heart, "heart");
+    this.makeSideCards(values, spade, "spade");
+
+    el.appendChild(diamond);
+    el.appendChild(club);
+    el.appendChild(heart);
+    el.appendChild(spade);
+
+  }
+
+  makeSideCards(values, group, suit){
     for (let i = 0; i < 13; i++){
-      for (let j=0; j < 4; j++){
-        let card = document.createElement("img");
-        card.dataset.value = values[i];
-        card.dataset.suit = suits[j];
-        card.dataset.taken = "no";
-        card.id = `${suits[j]}${values[i]}`;
-        card.className = "listed-card";
-        let imgNum = `${values[i]}${suits[j][0].toUpperCase()}`;
-        card.src = `assets/images/cards/${imgNum}.svg`;
-
-        
-
-        // let cardImg = document.createElement("img");
-        // let imgNum = `${values[i]}${suits[j][0].toUpperCase()}`;
-        // cardImg.className = "card-image"
-        // cardImg.src = `assets/images/cards/${imgNum}.svg`;
-
-        // card.appendChild(cardImg);
-        sideCards.appendChild(card);
-      }
+      let card = document.createElement("img");
+      card.dataset.value = values[i];
+      card.dataset.suit = suit;
+      card.dataset.taken = "no";
+      card.id = `${suit}${values[i]}`;
+      card.className = "listed-card";
+      let imgNum = `${values[i]}${suit[0].toUpperCase()}`;
+      card.src = `assets/images/cards/${imgNum}.svg`;
+      group.appendChild(card);
     }
-    el.appendChild(sideCards);
   }
 
   // to be refactored
@@ -128,11 +137,11 @@ class View {
   }
 
   setupRangeSelector(el){
-    // const rangeOptions = document.createElement("ul");
+    const rangeOptions = document.createElement("ul");
 
     let highPairs = document.createElement("BUTTON");
       highPairs.id = "high-pairs";
-      highPairs.innerHTML = "AsKs"
+      highPairs.innerHTML = "Pair As, Ks, Q, Js, 10s"
     
     let lowMidPairs = document.createElement("button");
       lowMidPairs.id = "low-mid-pairs";
@@ -145,22 +154,43 @@ class View {
     [highPairs, lowMidPairs, highSuitedConnects].forEach(button => {
       button.className = "range-selector";
       button.dataset.selected = "no";
-      el.appendChild(button);
+      rangeOptions.appendChild(button);
     })
 
-    // el.appendChild(rangeOptions);
+    el.appendChild(rangeOptions);
   }
 
 
+  // addSpinner(){
+  //   const spinnerWrapper = document.querySelector(".spinner-wrapper");
+  //   let spinner = document.createElement("img");
+  //   spinner.src = "assets/images/loading.gif";
+  //   spinner.className = "spinner";
+  //   spinnerWrapper.appendChild(spinner);
+  // }
+
+  // removeSpinner(){
+  //   const spinnerWrapper = document.querySelector(".spinner-wrapper");
+  //   let spinner = document.querySelector(".spinner");
+  //   spinnerWrapper.removeChild(spinner);
+  // }
 
   updateResult(result){
     const resultDisplay = document.querySelector(".result-display")
     resultDisplay.innerHTML = `<li>Win: ${(result[0]*100).toFixed(1)}%</li>
     <li>Lose: ${(result[1]*100).toFixed(1) }%</li>
-    <li>Tie: ${(result[2]*100).toFixed(1)}%</li>`
-    // <li>Total Number of Simulations: ${result[3]}</li>
+    <li>Split: ${(result[2]*100).toFixed(1)}%</li>
+    <li>Total Number of Simulations: ${result[3]}</li>`
   }
   
+  noResult(){
+    let prompt1 = document.querySelector(".prompt-details")
+    prompt1.innerHTML = "<p>Please select two cards or a range for your opponent!</p>";
+
+    const resultDisplay = document.querySelector(".result-display")
+    resultDisplay.innerHTML = 'Oops! Not enough Info!';
+  }
+
 }
 
 export default View;

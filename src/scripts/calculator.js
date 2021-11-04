@@ -311,7 +311,7 @@ class Calculator {
   //   return cardsLeft[idx];
   // }
 
-  preflopProp(hand1, hand2, deck, iterations){
+  preflopProp(hand1, hand2, deck, iterations=50000){
     let cardsLeft = this.remainingCards(hand1, hand2, [], deck);
     let fiveCardCombos = this.comboMaker(cardsLeft, 5);
     let winCount = 0;
@@ -403,7 +403,7 @@ class Calculator {
     let loseCount = 0;
     let tieCount = 0;
     range.forEach(hand2 => {
-      let outcome = this.preflopProp(hand1, hand2, deck, 10000);
+      let outcome = this.preflopProp(hand1, hand2, deck);
       winCount += outcome[0];
       loseCount += outcome[1];
       tieCount += outcome[2];
