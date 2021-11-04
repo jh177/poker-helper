@@ -3,6 +3,7 @@ $color2: #5B9EA6;
 $color3: #F2C166;
 $color4: #BF2E21;
 $color5: #D9A0A0;
+$color6: #280283;
 
 
 .wrapper{
@@ -202,12 +203,14 @@ $color5: #D9A0A0;
   margin: 5px;
   background: $color5;
   border: none;
-  color: white;
-  font-size: 24px;
+  color: $color4;
+  font-size: 20px;
   text-align: center;
   display: inline-block;
   white-space: normal;
   word-wrap: break-word;
+  border-radius: 5px;
+  outline: 2px solid $color4;
 }
 
 .range-selector:hover{
@@ -220,7 +223,7 @@ $color5: #D9A0A0;
   height: 84px;
   margin: 0 5px 0 0;
   z-index: 1;
-  border: 2px solid white;
+  border: 2px solid $color4;
 }
 
 .selected-range > ul > img:hover {
@@ -238,20 +241,6 @@ $color5: #D9A0A0;
   cursor: pointer;
 }
 
-// .range-selector:focus {     
-//     background-color:yellow;    
-// }
-
-// .range-selector{
-//   display: block;
-//     border: 1px solid  #ccc ;  
-//     border-radius: 8px;
-//     -webkit-appearance:normal;
-//     font-size: 1em;
-//     word-wrap: break-word;
-// }
-
-
 .board-cards{
   display: flex;
 }
@@ -266,7 +255,7 @@ $color5: #D9A0A0;
   width: 60px;
   height: 84px;
   margin: 0 5px 0 0;
-  border: 2px solid white;
+  border: 2px solid $color4;
   z-index: 1;
 }
 
@@ -289,7 +278,7 @@ $color5: #D9A0A0;
   width: 60px;
   height: 84px;
   margin: 0 5px 0 0;
-  border: 2px solid white;
+  border: 2px solid $color4;
   z-index: 1;
 }
 
@@ -298,9 +287,6 @@ $color5: #D9A0A0;
   cursor: pointer;
   -webkit-filter: brightness(120%);
 }
-
-
-
 
 
 #linkedin-logo{
@@ -369,7 +355,7 @@ $color5: #D9A0A0;
 
 .result-display{
   font-size: 24px;
-  text-align: left;
+  text-align: center;
   // border: 1px solid blue;
   border-radius: 10px;
   background: lightcyan;
@@ -378,6 +364,7 @@ $color5: #D9A0A0;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  outline: 5px solid $color6;
 }
 
 .result-display li {
