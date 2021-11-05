@@ -47,12 +47,16 @@ class Calculator {
     }
 
     //check straight flush
-    let kicker = this.checkStraight(uniqVals);
-    if (kicker !=="none" && this.checkStraightFlush(kicker, sevenCards)){
-      return [2, 
-        "StraightFlush", 
-        VALUES.indexOf(kicker)];
+    let lastIdx = uniqVals.length-1
+    let kickers = [uniqVals[lastIdx], uniqVals[lastIdx-1], uniqVals[lastIdx-2]];
+    for (let i=0; i<kickers.length; i++){
+      if (kickers[i] !== "none" && this.checkStraightFlush(kickers[i], sevenCards)) {
+        return [2,
+          "StraightFlush",
+          VALUES.indexOf(kickers[i])];
+      }
     }
+
     
     //check 4 of a kind
     if (this.checkFourOfKind(cardValCount)) {

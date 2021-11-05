@@ -39,7 +39,6 @@ In addition, this project will include:
 
 ## Technologies, Libraries, APIs
 This project will be implemented with the following technologies:
-* The Canvas API to render the poker table and the poker cards
 * Webpack and Babel to bundle and transpile the source JavaScript code
 * npm to manage project dependencies
 
