@@ -28,6 +28,7 @@ class Control{
     this.bindSimulateEvent();
     this.bindAboutEvent();
     this.bindCloseXEvent();
+    this.bindNextEvent();
   }
 
   bindAboutEvent(){
@@ -39,6 +40,8 @@ class Control{
   clickAboutOpen(){
     let aboutModal = document.querySelector(".modal-child")
     let aboutBackground = document.querySelector(".modal-background")
+    let aboutDetails1 = document.querySelector(".about-details")
+
     // debugger
     // if (!aboutModal.classList.contains("about-active")) {
     //   aboutModal.classList.add("about-active")
@@ -46,7 +49,22 @@ class Control{
     if (!aboutModal.style.display || aboutModal.style.display === "none"){
       aboutModal.style.display = "block";
       aboutBackground.style.display = "block"
+      aboutDetails1.style.display = "block"
     }
+  }
+
+  bindNextEvent() {
+    let next = document.querySelector(".next-btn")
+    let that = this;
+    next.addEventListener('click', that.clickNextOpen.bind(that))
+  }
+
+  clickNextOpen(){
+    let aboutDetails1 = document.querySelector(".about-details")
+    let aboutDetails2 = document.querySelector(".about-details-2")
+
+    aboutDetails1.style.display = "none"
+    aboutDetails2.style.display = "block"
   }
 
   bindCloseXEvent(){
@@ -59,10 +77,10 @@ class Control{
     event.stopPropagation()
     let aboutModal = document.querySelector(".modal-child")
     let aboutBackground = document.querySelector(".modal-background")
-    if (aboutModal.style.display === "block") {
-      aboutModal.style.display = "none";
-      aboutBackground.style.display = "none"
-    }
+    let aboutDetails2 = document.querySelector(".about-details-2")
+    aboutModal.style.display = "none";
+    aboutBackground.style.display = "none"
+    aboutDetails2.style.display = "none"
   }
 
 

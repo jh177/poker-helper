@@ -14,24 +14,24 @@ body {
   background: black;
 }
 
-.wrapper > * {
-  padding: 10px;
-  margin: 10px;
-  flex: 1 100%;
-  border-radius: 10px;
-}
-
 .wrapper * {
   font-family: "Josefin Sans", sans-serif;
 }
 
 .header {
-  height: 120px;
+  padding: 10px;
+  margin: 10px;
+  flex: 1 100%;
+  border-radius: 10px;
   display: flex;
 }
 
 .footer {
   background: #5B9EA6;
+  padding: 10px;
+  margin: 10px;
+  flex: 1 100%;
+  border-radius: 10px;
   min-height: 40px;
   display: flex;
   align-items: center;
@@ -71,6 +71,10 @@ body {
 }
 
 .cards-sidebar {
+  padding: 10px;
+  margin: 10px 0 10px 10px;
+  flex: 1 100%;
+  border-radius: 10px;
   background: #F2C166;
   display: flex;
   flex-direction: column;
@@ -88,6 +92,10 @@ body {
 }
 
 .content {
+  padding: 10px;
+  margin: 10px;
+  flex: 1 100%;
+  border-radius: 10px;
   text-align: left;
   background: #7EC8D9;
   min-height: 200px;
@@ -111,6 +119,10 @@ body {
 }
 
 .result {
+  padding: 10px;
+  margin: 10px 10px 10px 0;
+  flex: 1 100%;
+  border-radius: 10px;
   background: #BF2E21;
   display: flex;
   flex-direction: column;
@@ -471,8 +483,6 @@ body {
   display: none;
   height: 90%;
   width: 90%;
-  background: white;
-  border: 1px solid black;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -488,6 +498,8 @@ body {
   align-items: center;
   flex-direction: column;
   position: relative;
+  border: 3px solid black;
+  border-radius: 10px;
 }
 
 .close-x {
@@ -507,9 +519,6 @@ body {
 }
 
 .about-details {
-  position: fixed;
-  border: 3px solid black;
-  border-radius: 10px;
   display: block;
   width: 100%;
   background: #D9A0A0;
@@ -524,13 +533,9 @@ body {
   text-align: left;
 }
 
-.about-backdrop-active {
-  text-align: left;
-  display: block;
-  width: 400px;
+.about-details-2 {
+  display: none;
+  width: 100%;
   background: #D9A0A0;
-  z-index: 1;
-  bottom: 100%;
-  right: 100%;
   -webkit-filter: brightness(120%);
 }
