@@ -137,14 +137,29 @@ class View {
     let highPairs = document.createElement("li");
       highPairs.id = "high-pairs";
       highPairs.innerHTML = "High Pairs"
+
+    let highPairsPrompt = document.createElement("div")
+    highPairsPrompt.className = "range-selector-prompt";
+    highPairsPrompt.innerHTML = "<p>High pairs are AA, KK, QQ, JJ, 10s</p>"
+    highPairs.appendChild(highPairsPrompt);
     
     let lowMidPairs = document.createElement("li");
       lowMidPairs.id = "low-mid-pairs";
-      lowMidPairs.innerHTML = "Pocket Pairs";
+      lowMidPairs.innerHTML = "Mid-small Pairs";
+
+    let lowMidPairsPrompt = document.createElement("div")
+    lowMidPairsPrompt.className = "range-selector-prompt";
+    lowMidPairsPrompt.innerHTML = "<p>Mid-small pairs include pair 99, 88, 77, 66, 55, 44, 33, 22</p>"
+    lowMidPairs.appendChild(lowMidPairsPrompt);
 
     let highSuitedConnects = document.createElement("li")
       highSuitedConnects.id = "high-suited-connect";
       highSuitedConnects.innerHTML = "High Suited Connectors";
+
+    let highSuitedConnectsPrompt = document.createElement("div")
+    highSuitedConnectsPrompt.className = "range-selector-prompt";
+    highSuitedConnectsPrompt.innerHTML = "<p>High suited connectors include suited AK, KQ, QJ, J10s</p>"
+    highSuitedConnects.appendChild(highSuitedConnectsPrompt);
 
     [highPairs, lowMidPairs, highSuitedConnects].forEach(li => {
       li.className = "range-selector";
@@ -168,7 +183,7 @@ class View {
     prompt.innerHTML = "<p>Please select two cards or a range for your opponent!</p>";
 
     const resultDisplay = document.querySelector(".result-display-lists")
-    resultDisplay.innerHTML = 'Oops! Not enough Info!';
+    resultDisplay.innerHTML = 'Oops, not enough Info!';
   }
 
 }

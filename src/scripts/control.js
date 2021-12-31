@@ -26,6 +26,43 @@ class Control{
     this.bindPosEvents();
     this.bindSelectButtonEvents();
     this.bindSimulateEvent();
+    this.bindAboutEvent();
+    this.bindCloseXEvent();
+  }
+
+  bindAboutEvent(){
+    let about = document.querySelector(".about")
+    let that = this;
+    about.addEventListener('click', that.clickAboutOpen.bind(that))
+  }
+
+  clickAboutOpen(){
+    let aboutModal = document.querySelector(".modal-child")
+    let aboutBackground = document.querySelector(".modal-background")
+    // debugger
+    // if (!aboutModal.classList.contains("about-active")) {
+    //   aboutModal.classList.add("about-active")
+    // }
+    if (!aboutModal.style.display || aboutModal.style.display === "none"){
+      aboutModal.style.display = "block";
+      aboutBackground.style.display = "block"
+    }
+  }
+
+  bindCloseXEvent(){
+    let closeX = document.querySelector(".close-x")
+    let that = this;
+    closeX.addEventListener("click", that.clickAboutClose.bind(that))
+  }
+
+  clickAboutClose(event){
+    event.stopPropagation()
+    let aboutModal = document.querySelector(".modal-child")
+    let aboutBackground = document.querySelector(".modal-background")
+    if (aboutModal.style.display === "block") {
+      aboutModal.style.display = "none";
+      aboutBackground.style.display = "none"
+    }
   }
 
 
@@ -182,7 +219,7 @@ class Control{
     let buttons = document.querySelectorAll(".range-selector");
     buttons.forEach(button => {
         button.addEventListener('click', this.clickButton);
-        button.addEventListener('mouseover', this.overButton);
+        // button.addEventListener('mouseover', this.overButton);
     });
   }
 
@@ -223,6 +260,7 @@ class Control{
     let ele = document.querySelector('.range-info');
     let sum = 0;
     let limit = [];
+    if (this.rangeCards.length === 2) sum = 1
     if (this.boardCards.length > 0){
       this.boardCards.forEach(cardInfo => limit.push(cardInfo.join("")));
     }
@@ -239,7 +277,7 @@ class Control{
       })
       sum -= subtract;
     })
-    let newInfo = `Selected ${sum} hands`;
+    let newInfo = (sum > 1) ? `Selected ${sum} hands` : `Selected ${sum} hand`
     ele.innerHTML = newInfo;
   }
 
@@ -355,11 +393,15 @@ class Control{
         if (rangeHand.length > 1) finalRange.push(rangeHand);
       })
 
-      let result = this.calculator.getResult(hand1, finalRange, communityCards, deck);
-      if(result[3] === 0) {
-        this.view.noResult();
+      if (hand1.length < 2) {
+        this.view.noResult()
       } else {
-        this.view.updateResult(result);
+        let result = this.calculator.getResult(hand1, finalRange, communityCards, deck);
+        if(result[3] === 0) {
+          this.view.noResult();
+        } else {
+          this.view.updateResult(result);
+        }
       }
 
       target.innerHTML = "Ask Him";

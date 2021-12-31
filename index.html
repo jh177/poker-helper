@@ -32,73 +32,96 @@
       <div class="side-cards"></div>
     </aside>
 
-  <main class="content">
+    <main class="content">
 
-    <section class="main-container">
-      <div class="range">
-        <p class="range-info">Pick two cards or select range combos:</p>
-        <div class="selected-range"></div>
+      <section class="main-container">
+        <div class="range">
+          <p class="range-info">Pick two cards or select range combos:</p>
+          <div class="selected-range"></div>
+        </div>
+        <div class="board-cards">
+          <p>Board Cards</p>
+        </div>
+        <div class="hole-cards">
+          <p>Your Cards</p>
+        </div>
+
+      </section>
+    </main>
+
+
+    <aside class="result">
+
+      <div class="prompt">
+        <p class="prompt-details">Pick a card position to start</p>
       </div>
-      <div class="board-cards">
-        <p>Board Cards</p>
+
+      <p>Result</p>
+      <div class="result-display">
+        <div class="result-display-lists"></div>
       </div>
-      <div class="hole-cards">
-        <p>Your Cards</p>
+
+      <br>
+
+      <div class="strange">
+        <div class="strange-img">
+          <img src="assets/dr_strange.png" alt="">
+          <br>
+          the Wizard of Odds
+        </div>
+
+        <div>
+          <button class="simulation" id="simulation">Ask Him</button>
+          <button id="reset-button" type="reset" onclick="document.location.reload()">Reset</button>
+        </div>
+      </div>
+    </aside>
+
+    <footer class="footer">
+      <div class="about">About
+        <!-- <article id="about-details" class="about-details">
+          <p>Guardian of the Chips simulates poker hands and provides the probabilities of every possible outcome almost instantly. <br><br>
+          In Poker, it is crucial to think about what your opponent have in the form of a range. A poker range is a collection of all the possible hands a player can have at a particular point in a hand.<br><br>
+          With the help of the wizard of odds, you can select poker ranges of your opponent's and get the outcome probabilities to aid your decision-making.<br>
+          </p>
+        </article> -->
       </div>
 
-    </section>
-  </main>
+      <a href="https://github.com/jh177" target="_blank">
+        <img src="assets/images/logo/GitHub-Mark-120px-plus.png" alt="GitHub" id="github-logo">
+        <!-- Github -->
+      </a>
 
+      <a href="https://www.linkedin.com/in/zjhong/" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/768px-LinkedIn_logo_initials.png"
+        alt="LinkedIn" id="linkedin-logo">
+        <!-- LinkedIn -->
+      </a>
 
-  <aside class="result">
+      <a href="https://angel.co/u/james-hong-20/" target="_blank">
+        <img src="assets/images/logo/AngelList_Black_Victory_Hand.png"
+        alt="Anglelist" id="angellist-logo">
+        <!-- LinkedIn -->
+      </a>
 
-    <div class="prompt">
-      <p class="prompt-details">Pick a card position to start</p>
+    </footer>
+
+    <div class="modal-background">
+      <div class="modal-child">
+        <div class="modal-child-content">
+          <span class="close-x">X</span>
+          <div id="about-details" class="about-details">
+            <p>Guardian of the Chips simulates poker hands and provides the probabilities of every possible outcome almost
+              instantly. <br><br>
+              In Poker, it is crucial to think about what your opponent have in the form of a range. A poker range is a
+              collection of all the possible hands a player can have at a particular point in a hand.<br><br>
+              With the help of the wizard of odds, you can select poker ranges of your opponent's and get the outcome
+              probabilities to aid your decision-making.<br>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <p>Result</p>
-    <div class="result-display">
-      <div class="result-display-lists"></div>
-    </div>
-
-    <br>
-
-    <div class="strange">
-      <div class="strange-img">
-        <img src="assets/dr_strange.png" alt="">
-        <br>
-        the Wizard of Odds
-      </div>
-
-      <div>
-        <button class="simulation" id="simulation">Ask Him</button>
-        <button id="reset-button" type="reset" onclick="document.location.reload()">Reset</button>
-      </div>
-    </div>
-  </aside>
-
-  <footer class="footer">
-    <div class="about">About
-      <article class="about-details">
-        <p>Guardian of the Chips simulates poker hands and provides the probabilities of every possible outcome almost instantly. <br><br>
-        In Poker, it is crucial to think about what your opponent have in the form of a range. A poker range is a collection of all the possible hands a player can have at a particular point in a hand.<br><br>
-        With the help of the wizard of odds, you can select poker ranges of your opponent's and get the outcome probabilities to aid your decision-making.<br>
-        </p>
-      </article>
-    </div>
-
-    <a href="https://github.com/jh177">
-      <img src="assets/images/logo/GitHub-Mark-120px-plus.png" alt="GitHub" id="github-logo">
-      <!-- Github -->
-    </a>
-
-    <a href="https://www.linkedin.com/in/zjhong/">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/768px-LinkedIn_logo_initials.png"
-      alt="LinkedIn" id="linkedin-logo">
-      <!-- LinkedIn -->
-    </a>
-
-  </footer>
 
   </div>
 </body>
