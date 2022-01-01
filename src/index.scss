@@ -236,16 +236,16 @@ body{
   z-index: 2;
 }
 
-.range{
+.opponent{
   display: flex;
   flex-direction: column;
 }
 
-.selected-range{
+.opponent-card-selector{
   display: flex;
 }
 
-.selected-range > ul{
+.opponent-card-selector > ul{
   display: flex;
 }
 
@@ -280,7 +280,7 @@ body{
   // transform: scale(1.1);
 }
 
-.selected-range > ul > img {
+.opponent-card-selector > ul > img {
   width: 60px;
   height: 84px;
   margin: 0 5px 0 0;
@@ -288,7 +288,7 @@ body{
   border: 2px solid $color4;
 }
 
-.selected-range > ul > img:hover {
+.opponent-card-selector > ul > img:hover {
   // background: purple;
   cursor: pointer;
   -webkit-filter: brightness(120%);

@@ -108,7 +108,7 @@ class View {
 
   // to be refactored
   setupRangeCards(){
-    const rangeEl = document.querySelector(".selected-range");
+    const rangeEl = document.querySelector(".opponent-card-selector");
     const rangeCards = document.createElement("ul");
     let range1 = document.createElement("img");
     range1.className = "range-card";
@@ -130,7 +130,7 @@ class View {
   }
 
   setupRangeSelector(){
-    const rangeEl1 = document.querySelector(".selected-range");
+    const rangeEl1 = document.querySelector(".opponent-range-selectors");
     const rangeOptions = document.createElement("ul");
     rangeOptions.className = "range-options"
 

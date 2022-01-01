@@ -275,7 +275,7 @@ class Control{
   }
 
   updateComboNumber(){
-    let ele = document.querySelector('.range-info');
+    let ele = document.querySelector('.opponent-range-info');
     let sum = 0;
     let limit = [];
     if (this.rangeCards.length === 2) sum = 1

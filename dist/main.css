@@ -206,16 +206,16 @@ body {
   z-index: 2;
 }
 
-.range {
+.opponent {
   display: flex;
   flex-direction: column;
 }
 
-.selected-range {
+.opponent-card-selector {
   display: flex;
 }
 
-.selected-range > ul {
+.opponent-card-selector > ul {
   display: flex;
 }
 
@@ -248,7 +248,7 @@ body {
   -webkit-filter: brightness(120%);
 }
 
-.selected-range > ul > img {
+.opponent-card-selector > ul > img {
   width: 60px;
   height: 84px;
   margin: 0 5px 0 0;
@@ -256,7 +256,7 @@ body {
   border: 2px solid #BF2E21;
 }
 
-.selected-range > ul > img:hover {
+.opponent-card-selector > ul > img:hover {
   cursor: pointer;
   -webkit-filter: brightness(120%);
 }
