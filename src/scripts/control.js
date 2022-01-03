@@ -201,6 +201,7 @@ class Control{
     card.src = `assets/images/cards/${imgNum}.svg`;
     
     card.dataset.taken = "no";
+    this.updateComboNumber()
   }
 
   //for click actions on listed cards
@@ -267,6 +268,7 @@ class Control{
     pos.src = `assets/images/cards/${imgNum}.svg`;
 
     pos.dataset.fill = "filled";
+    this.updateComboNumber()
   }
   
   // add click actions for range selector buttons
