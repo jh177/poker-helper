@@ -57,7 +57,7 @@
           </div>
         </div>
         <div class="board-cards">
-          <p>Board Cards</p>
+          <p>Community Cards</p>
         </div>
         <div class="hole-cards">
           <p>Your Cards</p>
@@ -138,32 +138,44 @@
 
             <div id="about-details-2" class="about-details">
               <div>
-                The goal of a Poker game (Texas hold'em) is to use your hole cards and in combination with the community cards to make the best possible five-card poker hand.
-
-                Basic Key Rules:
-                * A game of Poker (Texas hold'em) feature several betting rounds
-                * Players get two private (face down) and up to five community cards (face up in the middle of the table)
-                * The five community cards are dealt in three stages
-                <img src="assets/images/community_cards.svg" alt="">
-                * Your mission is to construct your five-card poker hands using the best available five cards out of the seven total cards (the two hole cards and the five community cards).
-                * Unless all players abandon the game before the showdown, you need the highest poker hand to win
+                <div class="about-details-rules">
+                  The goal of a Poker game (Texas hold'em) is to use your hole cards and in combination with the community cards to make the best possible five-card poker hand.
+                  <br>
+                  <br>
+                  <span>Basic Key Rules:</span>
+                  <br>
+                  <ul className="about-details-rules-list">
+                    <li>A game of Poker (Texas hold'em) feature several betting rounds.</li>
+                    <li>Players get two private (face down) and up to five community cards (face up in the middle of the table).</li>
+                    <li>The five community cards are dealt in three stages:</li>
+                    <img id="community-cards-img" src="assets/images/community_cards.svg" alt="">
+                    <li>Your mission is to construct your five-card poker hands using the best available five cards out of the seven total cards
+                    (the two hole cards and the five community cards).</li>
+                    <li>
+                    Unless all players abandon the game before the showdown, you need the highest poker hand to win.
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
 
             <div id="about-details-3" class="about-details">
-              <img src="assets/images/poker-hand-rankings.jpeg" alt="">
+              <img id="about-hand-strength-img" src="assets/images/poker-hand-rankings.jpeg" alt="">
             </div>
 
             <div id="about-details-4" class="about-details">
-              <p>
-              If you knew your opponent's hand, then you would be able to make the perfect decision in every situation. Unfortunately, this is impossible as you will hardly ever be able to definitively put your opponent on one specific hand. Instead, you can rely on your knowledge, your experience and your observations to put your opponent on a number of possible hands. We call this collection of hands his range.
-              </p>
-              <p>
-              Wizard of Odds provides options to select three basic range for your opponent. 
-              * High Pairs: pair AA, KK, QQ, JJ, 10
-              * Mid-low Pairs: pair 99, 88, 77, 66, 55, 44, 33, 22
-              * High-suited-connectors: AK, KQ, QJ, J10 in the same suit
-              </p>
+              <div class="about-details-range">
+              If you knew your opponent's hand, then you would be able to make the perfect decision in every situation. Unfortunately, this is impossible as you will hardly ever be able to definitively put your opponent on one specific hand. Instead, you can rely on your knowledge, your experience and your observations to put your opponent on a number of possible hands. We call this collection of hands as "range".
+              <br>
+              <br>
+              <span>Wizard of Odds provide the option to select from 3 basic ranges for your opponent:</span>
+              <br>
+              <ul>
+                <li>High Pairs:  pair AA, KK, QQ, JJ, 1010</li>
+                <li>Mid-low Pairs:  pair 99, 88, 77, 66, 55, 44, 33, 22</li>
+                <li>High Suited Connectors:  AK, KQ, QJ, J10 in the same suit</li>
+              </ul>
+              </div>
             </div>
 
             <div id="about-details-5" class="about-details">

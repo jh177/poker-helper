@@ -611,8 +611,8 @@ body{
 
 .modal-child{
   display: none;
-  height: 90%;
-  width: 90%;
+  height: 90vh;
+  width: 90vw;
   // background: white;
   // border: 1px solid black;
   position: absolute;
@@ -622,8 +622,8 @@ body{
 }
 
 .modal-child-content{
-  height: 100%;
-  width: 100%;
+  height: 90vh;
+  width: 90vw;
   background: black;
   display: flex;
   // justify-content: center;
@@ -635,9 +635,9 @@ body{
 }
 
 .close-x{
-  height: 30px;
-  width: 30px;
-  font-size: 24px;
+  height: 2.5vh;
+  width: 2.5vh;
+  font-size: 2.5vh;
   padding: 0;
   border-radius: 50%;
   // background-color: transparent;
@@ -645,36 +645,36 @@ body{
   border: none;
   z-index: 100;
   position: absolute;
-  right: 16px;
-  top: 16px;
+  right: 1.5vh;
+  top: 2vh;
   text-align: center;
-  line-height: 24px;
+  line-height: 2.5vh;
   color: $color3;
 }
 
 .about-title{
   color: white;
-  font-size: 48px;
-  margin: 32px 0 16px;
+  font-size: 5vh;
+  margin: 3vh 0 2vh;
 }
 
 .about-nav{
   display: flex;
   color: white;
   align-items: center;
-  margin: 16px 0;
+  margin: 1.5vh 0;
 }
 
 .about-btn{
-  margin: 0 16px;
+  margin: 0 2vh;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 2vw;
 }
 
 .about-btn-active{
-  margin: 0 16px;
+  margin: 0 1vh;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 2vw;
   color: $color5;
   text-decoration: underline;
 }
@@ -682,7 +682,12 @@ body{
 
 
 .about-main{
-  margin: 16px 16px;
+  margin: 1.5vh 1vw;
+  // margin-bottom: 1.5vh;
+  background-color: $color5;
+  width: 88vw;
+  height: 80vh;
+  border-radius: 10px;
 }
 
 .about-details{
@@ -691,28 +696,61 @@ body{
 
 .about-details-active{
   // position: fixed;
-  // margin: 0 auto;
+  margin: 3vh;
   display: block;
-  width: 100%;
-  background: $color5;
+  // width: 100%;
   // bottom:100%;
   // right: 100%;
   -webkit-filter: brightness(120%);
 }
 
 .about-details-active p{
-  padding: 5px;
+  // margin: 20px;
   font-family: 'Josefin Sans', sans-serif;
   color: black;
-  font-size: 32px;
+  font-size: 3.5vh;
   text-align: left;
-
 }
 
-.about-details-2{
-  display: none;
-  width: 100%;
-  background: $color5;
-  -webkit-filter: brightness(120%);
+.about-details-rules{
+  font-size: 3vh;
+  text-align: left;
 }
 
+.about-details-rules>span{
+  text-decoration: underline;
+}
+
+.about-details-rules ul li{
+  margin: 1.5vh 0;
+}
+
+#community-cards-img{
+  height: 10vh;
+  margin: 1vh 0;
+}
+
+#about-hand-strength-img{
+  display: block;
+  // max-width:75%;
+  height:65vh;
+  // width: auto;
+  margin: auto;
+}
+
+.about-details-range{
+  font-size: 3vh;
+  text-align: left;
+}
+
+.about-details-range>span{
+  text-decoration: underline;
+}
+
+.about-details-range ul{
+  margin-top: 6vh;
+}
+
+.about-details-range ul li{
+  margin: 1.5vh 0;
+}

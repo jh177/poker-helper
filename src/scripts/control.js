@@ -480,11 +480,13 @@ class Control{
     let aboutDetails = document.querySelector(`#about-details-${num}`)
     let aboutDetailsActive = document.querySelector(".about-details-active")
 
-    aboutBtnTarget.classList.add("about-btn-active");
-    aboutBtnActive.classList.remove("about-btn-active");
+    if (aboutBtnTarget.id !== aboutBtnActive.id) {
+      aboutBtnTarget.classList.add("about-btn-active");
+      aboutBtnActive.classList.remove("about-btn-active");
+      aboutDetails.classList.add("about-details-active");
+      aboutDetailsActive.classList.remove("about-details-active")
+    }
 
-    aboutDetails.classList.add("about-details-active");
-    aboutDetailsActive.classList.remove("about-details-active")
   }
 
   bindCloseXEvent() {
@@ -497,10 +499,19 @@ class Control{
     event.stopPropagation()
     let aboutModal = document.querySelector(".modal-child")
     let aboutBackground = document.querySelector(".modal-background")
-    let aboutDetails2 = document.querySelector(".about-details-2")
     aboutModal.style.display = "none";
     aboutBackground.style.display = "none"
-    aboutDetails2.style.display = "none"
+
+    let aboutBtnActive = document.querySelector(".about-btn-active")
+    let aboutBtn1 = document.querySelector("#about-btn-1")
+    let aboutDetails1 = document.querySelector("#about-details-1")
+    let aboutDetailsActive = document.querySelector(".about-details-active")
+
+    aboutBtn1.classList.add("about-btn-active");
+    aboutBtnActive.classList.remove("about-btn-active");
+
+    aboutDetails1.classList.add("about-details-active")
+    aboutDetailsActive.classList.remove("about-details-active")
   }
 }
 
