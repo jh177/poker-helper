@@ -108,7 +108,7 @@ class View {
 
   // to be refactored
   setupRangeCards(){
-    const rangeEl = document.querySelector(".opponent-card-selector");
+    const rangeEl = document.querySelector(".opponent-card-selectors");
     const rangeCards = document.createElement("ul");
     let range1 = document.createElement("img");
     range1.className = "range-card";
@@ -180,7 +180,7 @@ class View {
   
   noResult(){
     let prompt = document.querySelector(".prompt-details")
-    prompt.innerHTML = "<p>Please select two cards or a range for your opponent!</p>";
+    prompt.innerHTML = "<p>Please at least select your cards and opponent's cards or range to start</p>";
 
     const resultDisplay = document.querySelector(".result-display-lists")
     resultDisplay.innerHTML = 'Oops, not enough Info!';

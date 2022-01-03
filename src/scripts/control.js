@@ -29,6 +29,7 @@ class Control{
     this.bindAboutEvent();
     this.bindCloseXEvent();
     this.bindNextEvent();
+    this.bindOpponentCardRangeSwitchEvent();
   }
 
   bindAboutEvent(){
@@ -83,6 +84,42 @@ class Control{
     aboutDetails2.style.display = "none"
   }
 
+
+  // set actions on opponent's card or range
+  bindOpponentCardRangeSwitchEvent(){
+    let selectRange = document.querySelector(".select-range-btn")
+    let selectCard = document.querySelector(".select-card-btn")
+    let that = this;
+    selectRange.addEventListener("click", that.clickOpenRange.bind(that))
+    selectCard.addEventListener("click", that.clickOpenCard.bind(that))
+  }
+
+  clickOpenRange(){
+    let rangeSelectors = document.querySelector(".opponent-range-selectors")
+    let cardSelector = document.querySelector(".opponent-card-selectors")
+    rangeSelectors.style.display = "block"
+    cardSelector.style.display = "none"
+    let rangeCards = document.querySelectorAll(".range-card")
+    rangeCards.forEach(rangeCard=>{
+      this.removeCardFromPos(rangeCard.id);
+      rangeCard.dataset.fill = "empty";
+      rangeCard.src = "assets/images/cards/RED_BACK.svg"
+    })
+  }
+
+  clickOpenCard() {
+    let rangeSelectors = document.querySelector(".opponent-range-selectors")
+    let cardSelector = document.querySelector(".opponent-card-selectors")
+    cardSelector.style.display = "block"
+    rangeSelectors.style.display = "none"
+    let ranges = document.querySelectorAll(".range-selector")
+    ranges.forEach(range=>{
+      this.selectedButton[range.id] = [];
+      range.dataset.selected = "no";
+      range.classList.remove("selected");
+    })
+    this.updateComboNumber()
+  }
 
   // For click actions on positions
   bindPosEvents() {

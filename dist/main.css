@@ -209,6 +209,7 @@ body {
 .opponent {
   display: flex;
   flex-direction: column;
+  min-height: 200px;
 }
 
 .opponent-card-selector {
@@ -240,15 +241,85 @@ body {
   justify-content: center;
   border-radius: 5px;
   outline: 2px solid #BF2E21;
-  width: 33%;
-  height: 40%;
+  width: 30%;
+  height: 48px;
+  cursor: pointer;
 }
 
 .range-selector:hover {
   -webkit-filter: brightness(120%);
 }
 
-.opponent-card-selector > ul > img {
+.range-selector-prompt {
+  position: absolute;
+  display: none;
+  border: 3px solid black;
+  border-radius: 10px;
+}
+
+.range-selector-prompt p {
+  padding: 10px;
+  font-family: "Josefin Sans", sans-serif;
+  color: black;
+  font-size: 20px;
+}
+
+.range-selector:hover .range-selector-prompt {
+  text-align: left;
+  display: block;
+  width: 300px;
+  height: 100px;
+  background: #D9A0A0;
+  z-index: 2;
+  bottom: 50%;
+  left: 50%;
+  -webkit-filter: brightness(120%);
+}
+
+.opponent-range-selectors {
+  display: none;
+}
+
+.opponent-card-selectors {
+  display: block;
+}
+
+.opponent-selectors-title-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.opponent-selectors-title {
+  font-size: 30px;
+  font-weight: 500;
+  margin-right: 16px;
+  color: black;
+}
+
+.select-range-btn, .select-card-btn {
+  cursor: pointer;
+  padding: 5px;
+  margin: 5px;
+  background: #D9A0A0;
+  border: none;
+  color: #BF2E21;
+  font-size: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  outline: 2px solid #BF2E21;
+  width: 33%;
+  height: 40%;
+}
+
+.select-range-btn:hover, .select-card-btn:hover {
+  -webkit-filter: brightness(120%);
+}
+
+.opponent-card-selectors > ul > img {
   width: 60px;
   height: 84px;
   margin: 0 5px 0 0;
@@ -256,17 +327,13 @@ body {
   border: 2px solid #BF2E21;
 }
 
-.opponent-card-selector > ul > img:hover {
+.opponent-card-selectors > ul > img:hover {
   cursor: pointer;
   -webkit-filter: brightness(120%);
 }
 
 .range-selector.selected {
   background: #793c11;
-}
-
-.range-selector:hover {
-  cursor: pointer;
 }
 
 .board-cards {
@@ -438,32 +505,6 @@ body {
 #reset-button:hover {
   cursor: pointer;
   -webkit-filter: brightness(80%);
-}
-
-.range-selector-prompt {
-  position: absolute;
-  display: none;
-  border: 3px solid black;
-  border-radius: 10px;
-}
-
-.range-selector-prompt p {
-  padding: 10px;
-  font-family: "Josefin Sans", sans-serif;
-  color: black;
-  font-size: 20px;
-}
-
-.range-selector:hover .range-selector-prompt {
-  text-align: left;
-  display: block;
-  width: 300px;
-  height: 100px;
-  background: #D9A0A0;
-  z-index: 2;
-  bottom: 50%;
-  left: 80%;
-  -webkit-filter: brightness(120%);
 }
 
 .modal-background {
