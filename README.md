@@ -4,15 +4,15 @@
 
 ## Background
 
-PokerHelper is a web application for users to calculate win probabilities during a poker game. PokerHelper allows users to simulate a poker hand and see the probabilities of every possible outcome almost instantly. 
+Wizard of Odds is a web application for users to calculate win probabilities during a poker game. Wizard of Odds allows users to simulate a poker hand and see the probabilities of every possible outcome almost instantly. 
 
-One important feature of PokerHelper is the inclusion of the poker range. A poker range is a collection of all the possible hands a player can have at a particular point in a hand. It is crucial to think about what your opponents have in the form of a range. You can input a range of the opponent and see the outcome probabilities of your hand. As the hand progresses, you can refine the opponents’ ranges based on their behaviors and update them in PokerHelper. PokerHelper will provide the updated outcome probabilities to aid your decision-making.
+One important feature of Wizard of Odds is the inclusion of the poker range. A poker range is a collection of all the possible hands a player can have at a particular point in a hand. It is crucial to think about what your opponents have in the form of a range. You can input a range of the opponent and see the outcome probabilities of your hand. As the hand progresses, you can refine the opponents’ ranges based on their behaviors and update them in Wizard of Odds. Wizard of Odds will provide the updated outcome probabilities to aid your decision-making.
 
 
 
 ## Functionality & MVPs
 
-With PokerHelper, users will be able to:
+With Wizard of Odds, users will be able to:
 * Pick two hole cards
 * Select a range of the opponent
 * Select the community cards for the flop, turn, and river
@@ -46,11 +46,11 @@ This project will be implemented with the following technologies:
 
 ## Implementation Timeline
 
-1. Friday && Weekend: Setup project, including getting webpack up and running. Get canvas to show up on the screen. Create Card and Deck classes. Get the hold cards and community cards to render to the canvas.
-2. Monday: Create a Range class and render a range grid on canvas for displaying the selected range. Make the grid cells interact with card values.
-3. Tuesday: Implement the logic of calculating possibilities of outcomes.
-4. Wednesday: Finish implementing user controls, and focus on styling. 
-5. Thursday Morning: Deploy to GitHub pages. If time, polish the README.
+1. Friday && Weekend (10/28/21-10/31/21): Setup project, including getting webpack up and running. Get canvas to show up on the screen. Create Card and Deck classes. Get the hold cards and community cards to render to the canvas.
+2. Monday (11/01/21): Create a Range class and render a range grid on canvas for displaying the selected range. Make the grid cells interact with card values.
+3. Tuesday (11/02/21): Implement the logic of calculating possibilities of outcomes.
+4. Wednesday (11/03/21): Finish implementing user controls, and focus on styling. 
+5. Thursday Morning (11/04/21): Deploy to GitHub pages. If time, polish the README.
 
 
 

@@ -669,3 +669,21 @@ body {
 .about-details-range ul li {
   margin: 1.5vh 0;
 }
+
+.about-details-use {
+  font-size: 5vh;
+  text-align: left;
+}
+
+.about-details-use > span {
+  text-decoration: underline;
+}
+
+.about-details-use ol {
+  margin-top: 6vh;
+}
+
+.about-details-use ol li {
+  margin: 1.5vh 0;
+  font-size: 4vh;
+}
