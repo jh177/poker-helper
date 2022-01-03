@@ -99,12 +99,20 @@ class Control{
     let cardSelector = document.querySelector(".opponent-card-selectors")
     rangeSelectors.style.display = "block"
     cardSelector.style.display = "none"
+
     let rangeCards = document.querySelectorAll(".range-card")
     rangeCards.forEach(rangeCard=>{
-      this.removeCardFromPos(rangeCard.id);
-      rangeCard.dataset.fill = "empty";
-      rangeCard.src = "assets/images/cards/RED_BACK.svg"
+      if (rangeCard.dataset.fill !== "empty"){
+        this.removeCardFromPos(rangeCard.id);
+        rangeCard.dataset.fill = "empty";
+        rangeCard.src = "assets/images/cards/RED_BACK.svg"
+      }
     })
+
+    this.bindPosEvents();
+    this.removeListEvents();
+    let cardList = document.querySelector(".cards-sidebar")
+    cardList.classList.remove("highlight")
   }
 
   clickOpenCard() {
@@ -334,7 +342,7 @@ class Control{
       })
       sum -= subtract;
     })
-    let newInfo = (sum > 1) ? `Selected ${sum} hands` : `Selected ${sum} hand`
+    let newInfo = `${sum} hands selected`
     ele.innerHTML = newInfo;
   }
 
@@ -478,7 +486,7 @@ class Control{
 
   activatePickPosPrompt() {
     let prompt1 = document.querySelector(".prompt-details")
-    prompt1.innerHTML = "<p>Pick another position or Ask Him!</p>";
+    prompt1.innerHTML = "<p>Add board cards or Ask Him!</p>";
 
     let cardList = document.querySelector(".cards-sidebar")
     cardList.classList.remove("highlight")

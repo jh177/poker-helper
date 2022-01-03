@@ -232,7 +232,7 @@ body {
   margin: 5px;
   background: #D9A0A0;
   border: none;
-  color: #BF2E21;
+  color: black;
   font-size: 20px;
   text-align: center;
   display: flex;
@@ -269,10 +269,9 @@ body {
   display: block;
   width: 300px;
   height: 100px;
-  background: #D9A0A0;
+  background: white;
   z-index: 2;
-  bottom: 50%;
-  left: 50%;
+  bottom: 100%;
   -webkit-filter: brightness(120%);
 }
 
@@ -286,6 +285,7 @@ body {
 
 .opponent-selectors-title-wrapper {
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -311,12 +311,15 @@ body {
   justify-content: center;
   border-radius: 5px;
   outline: 2px solid #BF2E21;
-  width: 33%;
-  height: 40%;
 }
 
 .select-range-btn:hover, .select-card-btn:hover {
   -webkit-filter: brightness(120%);
+}
+
+.opponent-range-info {
+  margin: 16px;
+  color: blue;
 }
 
 .opponent-card-selectors > ul > img {

@@ -262,7 +262,7 @@ body{
   margin: 5px;
   background: $color5;
   border: none;
-  color: $color4;
+  color: black;
   font-size: 20px;
   text-align: center;
   display: flex;
@@ -275,6 +275,7 @@ body{
   height: 48px;
   // position: relative;
   cursor: pointer;
+  // -webkit-filter: brightness(120%);
 }
 
 .range-selector:hover{
@@ -301,10 +302,10 @@ body{
   display: block;
   width: 300px;
   height: 100px;
-  background: $color5;
+  background: white;
   z-index: 2;
-  bottom:50%;
-  left: 50%;
+  bottom:100%;
+  // left: 50%;
   -webkit-filter: brightness(120%);
 }
 
@@ -319,6 +320,7 @@ body{
 
 .opponent-selectors-title-wrapper{
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -345,13 +347,16 @@ body{
   justify-content: center;
   border-radius: 5px;
   outline: 2px solid $color4;
-  width: 33%;
-  height: 40%;
 }
 
 .select-range-btn:hover,.select-card-btn:hover{
   -webkit-filter: brightness(120%);
   // transform: scale(1.1);
+}
+
+.opponent-range-info{
+  margin: 16px;
+  color:blue;
 }
 
 .opponent-card-selectors > ul > img {
