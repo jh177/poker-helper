@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta property="og:title" content="Guardian of the Chips" />
+  <meta property="og:title" content="Wizard of Odds" />
   <meta property="og:image" content="assets/project_preview_pic_1.png" />
   <meta property="og:description" content="A web application to allow users to simulate a poker hand and see the probabilities of every possible outcome." />
   <meta property="og:url" content="https://jh177.github.io/poker-helper/" />
@@ -17,14 +17,17 @@
   <link rel="stylesheet" href="./src/css_reset.scss" />
   <link rel="stylesheet" href="./dist/main.css" />
   <script src="./dist/main.js"></script>
-  <title>Guardian of the Chips</title>
+  <title>Wizard of Odds</title>
+  <link rel="icon" href="https://fontmeme.com/permalink/220103/e2337ec170e3fd56c46472b46db7199e.png" />
 </head>
 
 <body>
   <div class="wrapper">
     <header class="header">
       <!-- <h1 class="main-title">Guardian of the Chips</h1> -->
-      <img src="https://fontmeme.com/permalink/211104/b67e5650c3597d0215dedd00402b99f8.png" alt="guardian-of-the-chip" id="main-logo">
+      <!-- <img src="https://fontmeme.com/permalink/211104/b67e5650c3597d0215dedd00402b99f8.png" alt="guardian-of-the-chip" id="main-logo"> -->
+      <img src="https://fontmeme.com/permalink/220103/e449b9897e2e0469a25df903b991b0c1.png" alt="wizard-of-odds" id="main-logo">
+      <!-- <img src="https://fontmeme.com/permalink/220103/1b080385b2d84faae7fe40fcef859f4a.png" alt="wizard-of-odds" id="main-logo"> -->
     </header>
     
     <aside class="cards-sidebar">
@@ -41,13 +44,13 @@
           <div class="opponent-card-selectors">
             <div class="opponent-selectors-title-wrapper">
               <div class="opponent-selectors-title">Opponent's Cards</div>
-              <div class="select-range-btn">Select Range Instead</div>
+              <div class="select-range-btn">Range Selection Mode</div>
             </div>
           </div>
           <div class="opponent-range-selectors">
             <div class="opponent-selectors-title-wrapper">
               <div class="opponent-selectors-title">Opponent's Range</div>
-              <div class="select-card-btn">Select Cards Instead</div>
+              <div class="select-card-btn">Card Selection Mode</div>
             </div>
             <div class="opponent-range-info">
             </div>
@@ -92,14 +95,7 @@
     </aside>
 
     <footer class="footer">
-      <div class="about">About
-        <!-- <article id="about-details" class="about-details">
-          <p>Guardian of the Chips simulates poker hands and provides the probabilities of every possible outcome almost instantly. <br><br>
-          In Poker, it is crucial to think about what your opponent have in the form of a range. A poker range is a collection of all the possible hands a player can have at a particular point in a hand.<br><br>
-          With the help of the wizard of odds, you can select poker ranges of your opponent's and get the outcome probabilities to aid your decision-making.<br>
-          </p>
-        </article> -->
-      </div>
+      <div class="about">About</div>
 
       <a href="https://github.com/jh177" target="_blank">
         <img src="assets/images/logo/GitHub-Mark-120px-plus.png" alt="GitHub" id="github-logo">
@@ -124,19 +120,62 @@
       <div class="modal-child">
         <div class="modal-child-content">
           <span class="close-x">X</span>
-          <div id="about-details" class="about-details">
-            <p>Guardian of the Chips simulates poker hands and provides the probabilities of every possible outcome almost
-              instantly. <br><br>
-              In Poker, it is crucial to think about what your opponent have in the form of a range. A poker range is a
-              collection of all the possible hands a player can have at a particular point in a hand.<br><br>
-              With the help of the wizard of odds, you can select poker ranges of your opponent's and get the outcome
-              probabilities to aid your decision-making.<br>
-            </p>
+          <div class="about-title">Welcome to Wizard of Odds</div>
+          <div class="about-nav">
+            <div id="about-btn-1" class="about-btn about-btn-active">About</div>
+            <div id="about-btn-2" class="about-btn">Basic Rules of Poker</div>
+            <div id="about-btn-3" class="about-btn">Hand Strength</div>
+            <div id="about-btn-4" class="about-btn">Poker Range</div>
+            <div id="about-btn-5" class="about-btn">How to Use</div>
           </div>
-          <div id="about-details-2" class="about-details-2">
-            about no 2
+          <div class="about-main">
+            <div id="about-details-1" class="about-details  about-details-active">
+              <p>Wizard of Odds simulates poker hands and provides the probabilities of every possible outcome almost instantly. <br><br>
+              In Poker, it is crucial to think about what your opponent have in the form of a range. A poker range is a collection of all the possible hands a player can have at a particular point in a hand.<br><br>
+              With the help of the wizard of odds, you can select poker ranges of your opponent's and get the outcome probabilities to aid your decision-making.<br>
+              </p>
+            </div>
+
+            <div id="about-details-2" class="about-details">
+              <div>
+                The goal of a Poker game (Texas hold'em) is to use your hole cards and in combination with the community cards to make the best possible five-card poker hand.
+
+                Basic Key Rules:
+                * A game of Poker (Texas hold'em) feature several betting rounds
+                * Players get two private (face down) and up to five community cards (face up in the middle of the table)
+                * The five community cards are dealt in three stages
+                <img src="assets/images/community_cards.svg" alt="">
+                * Your mission is to construct your five-card poker hands using the best available five cards out of the seven total cards (the two hole cards and the five community cards).
+                * Unless all players abandon the game before the showdown, you need the highest poker hand to win
+              </div>
+            </div>
+
+            <div id="about-details-3" class="about-details">
+              <img src="assets/images/poker-hand-rankings.jpeg" alt="">
+            </div>
+
+            <div id="about-details-4" class="about-details">
+              <p>
+              If you knew your opponent's hand, then you would be able to make the perfect decision in every situation. Unfortunately, this is impossible as you will hardly ever be able to definitively put your opponent on one specific hand. Instead, you can rely on your knowledge, your experience and your observations to put your opponent on a number of possible hands. We call this collection of hands his range.
+              </p>
+              <p>
+              Wizard of Odds provides options to select three basic range for your opponent. 
+              * High Pairs: pair AA, KK, QQ, JJ, 10
+              * Mid-low Pairs: pair 99, 88, 77, 66, 55, 44, 33, 22
+              * High-suited-connectors: AK, KQ, QJ, J10 in the same suit
+              </p>
+            </div>
+
+            <div id="about-details-5" class="about-details">
+              To use this app
+              1. select your cards
+              2. select your opponent's cards
+              3. or you can use range mode to select ranges
+              4. select community cards
+              5. ask the wizard to calculate the odds
+            </div>
+
           </div>
-          <div class="next-btn">Next</div>
         </div>
       </div>
     </div>

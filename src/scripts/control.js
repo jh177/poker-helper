@@ -8,6 +8,7 @@ class Control{
     this.clickList = this.clickList.bind(this);
     this.clickButton = this.clickButton.bind(this);
     this.overButton = this.overButton.bind(this);
+    // this.clickAboutNavOpen = this.clickAboutNavOpen(this);
 
     this.listCards = new Deck();
     this.holeCards = [];
@@ -26,62 +27,10 @@ class Control{
     this.bindPosEvents();
     this.bindSelectButtonEvents();
     this.bindSimulateEvent();
-    this.bindAboutEvent();
-    this.bindCloseXEvent();
-    this.bindNextEvent();
     this.bindOpponentCardRangeSwitchEvent();
-  }
-
-  bindAboutEvent(){
-    let about = document.querySelector(".about")
-    let that = this;
-    about.addEventListener('click', that.clickAboutOpen.bind(that))
-  }
-
-  clickAboutOpen(){
-    let aboutModal = document.querySelector(".modal-child")
-    let aboutBackground = document.querySelector(".modal-background")
-    let aboutDetails1 = document.querySelector(".about-details")
-
-    // debugger
-    // if (!aboutModal.classList.contains("about-active")) {
-    //   aboutModal.classList.add("about-active")
-    // }
-    if (!aboutModal.style.display || aboutModal.style.display === "none"){
-      aboutModal.style.display = "block";
-      aboutBackground.style.display = "block"
-      aboutDetails1.style.display = "block"
-    }
-  }
-
-  bindNextEvent() {
-    let next = document.querySelector(".next-btn")
-    let that = this;
-    next.addEventListener('click', that.clickNextOpen.bind(that))
-  }
-
-  clickNextOpen(){
-    let aboutDetails1 = document.querySelector(".about-details")
-    let aboutDetails2 = document.querySelector(".about-details-2")
-
-    aboutDetails1.style.display = "none"
-    aboutDetails2.style.display = "block"
-  }
-
-  bindCloseXEvent(){
-    let closeX = document.querySelector(".close-x")
-    let that = this;
-    closeX.addEventListener("click", that.clickAboutClose.bind(that))
-  }
-
-  clickAboutClose(event){
-    event.stopPropagation()
-    let aboutModal = document.querySelector(".modal-child")
-    let aboutBackground = document.querySelector(".modal-background")
-    let aboutDetails2 = document.querySelector(".about-details-2")
-    aboutModal.style.display = "none";
-    aboutBackground.style.display = "none"
-    aboutDetails2.style.display = "none"
+    this.bindAboutModalEvent();
+    this.bindCloseXEvent();
+    this.bindAboutNavEvent()
   }
 
 
@@ -490,6 +439,68 @@ class Control{
 
     let cardList = document.querySelector(".cards-sidebar")
     cardList.classList.remove("highlight")
+  }
+
+  // about events
+  bindAboutModalEvent() {
+    let about = document.querySelector(".about")
+    let that = this;
+    about.addEventListener('click', that.clickAboutModalOpen.bind(that))
+  }
+
+  clickAboutModalOpen() {
+    let aboutModal = document.querySelector(".modal-child")
+    let aboutBackground = document.querySelector(".modal-background")
+    let aboutDetails1 = document.querySelector("#about-details-1")
+
+    // debugger
+    // if (!aboutModal.classList.contains("about-active")) {
+    //   aboutModal.classList.add("about-active")
+    // }
+    if (!aboutModal.style.display || aboutModal.style.display === "none") {
+      aboutModal.style.display = "block";
+      aboutBackground.style.display = "block"
+      aboutDetails1.classList.add("about-details-active")
+    }
+  }
+
+  bindAboutNavEvent() {
+    let aboutNavs = document.querySelectorAll(".about-btn")
+    let that = this;
+    aboutNavs.forEach(aboutNav=>{
+      aboutNav.addEventListener('click', that.clickAboutNavOpen.bind(that))
+    })
+  }
+
+  clickAboutNavOpen(event) {
+    let aboutBtnTarget = event.currentTarget;
+    // console.log(aboutBtnTarget.id)
+    let aboutBtnActive = document.querySelector(".about-btn-active")
+    let num = aboutBtnTarget.id.slice(-1)
+    let aboutDetails = document.querySelector(`#about-details-${num}`)
+    let aboutDetailsActive = document.querySelector(".about-details-active")
+
+    aboutBtnTarget.classList.add("about-btn-active");
+    aboutBtnActive.classList.remove("about-btn-active");
+
+    aboutDetails.classList.add("about-details-active");
+    aboutDetailsActive.classList.remove("about-details-active")
+  }
+
+  bindCloseXEvent() {
+    let closeX = document.querySelector(".close-x")
+    let that = this;
+    closeX.addEventListener("click", that.clickAboutClose.bind(that))
+  }
+
+  clickAboutClose(event) {
+    event.stopPropagation()
+    let aboutModal = document.querySelector(".modal-child")
+    let aboutBackground = document.querySelector(".modal-background")
+    let aboutDetails2 = document.querySelector(".about-details-2")
+    aboutModal.style.display = "none";
+    aboutBackground.style.display = "none"
+    aboutDetails2.style.display = "none"
   }
 }
 
