@@ -6,13 +6,15 @@ body {
 }
 
 .header {
+  margin-top: 1vh;
+  margin-bottom: 1vh;
   flex: 1 100%;
   display: flex;
 }
 
 .header img {
   display: block;
-  max-width: 75%;
+  max-width: 60vw;
   width: auto;
   height: auto;
   margin: auto;
@@ -22,8 +24,8 @@ body {
   display: flex;
   flex-flow: row wrap;
   text-align: center;
-  width: 100vw;
-  height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
   background: black;
 }
 
@@ -35,9 +37,10 @@ body {
   background: #5B9EA6;
   padding: 10px;
   margin: 10px;
+  margin-top: 0;
   flex: 1 100%;
   border-radius: 10px;
-  min-height: 40px;
+  max-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -50,24 +53,28 @@ body {
 
 #linkedin-logo {
   margin-left: 10px;
-  height: 30px;
+  height: 5vh;
 }
 
 #github-logo {
   margin-left: 10px;
-  height: 30px;
+  height: 5vh;
 }
 
 #angellist-logo {
   margin-left: 10px;
   margin-left: 10px;
-  height: 30px;
+  height: 5vh;
+}
+
+.footer-logo:hover {
+  transform: scale(1.1);
 }
 
 .about {
   padding: 0 10px 0 0;
   cursor: pointer;
-  font-size: 24px;
+  font-size: 4vh;
 }
 
 .about:hover {
@@ -77,7 +84,7 @@ body {
 
 .cards-sidebar {
   padding: 10px;
-  margin: 10px 0 10px 10px;
+  margin: 0 0 10px 10px;
   flex: 1 100%;
   border-radius: 10px;
   background: #F2C166;
@@ -99,6 +106,7 @@ body {
 .content {
   padding: 10px;
   margin: 10px;
+  margin-top: 0;
   flex: 1 100%;
   border-radius: 10px;
   text-align: left;
@@ -126,7 +134,7 @@ body {
 
 .result {
   padding: 10px;
-  margin: 10px 10px 10px 0;
+  margin: 0 10px 10px 0;
   flex: 1 100%;
   border-radius: 10px;
   background: #BF2E21;
@@ -485,15 +493,15 @@ body {
 
 .result button {
   color: black;
-  height: 33%;
-  width: 75%;
+  height: 6vh;
+  width: 15vh;
   padding: 5px;
   margin: 5px;
   border-radius: 8px;
   background: #F2C166;
   border: none;
   margin: auto;
-  font-size: 20px;
+  font-size: 3vh;
   font-weight: 700px;
 }
 
