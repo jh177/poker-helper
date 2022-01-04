@@ -223,7 +223,7 @@ body {
 .opponent {
   display: flex;
   flex-direction: column;
-  min-height: 20vh;
+  min-height: 200px;
 }
 
 .opponent-card-selector {
@@ -305,7 +305,7 @@ body {
 }
 
 .opponent-selectors-title {
-  font-size: 4vh;
+  font-size: 30px;
   font-weight: 500;
   margin-right: 16px;
   color: black;
@@ -480,13 +480,13 @@ body {
 
 .result > p {
   margin-bottom: 5px;
-  font-size: 30px;
+  font-size: 4vh;
   font-weight: 700px;
   color: white;
 }
 
 .card-info {
-  margin-top: 10px;
+  margin-top: 1vh;
   font-size: 3vh;
   font-weight: 700;
 }

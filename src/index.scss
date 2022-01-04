@@ -152,7 +152,7 @@ body{
 }
 
 .main-container p{
-  font-size: 30px;
+  font-size: 4vh;
   font-weight: 500;
   // color: white
   color: black
@@ -239,8 +239,8 @@ body{
 .side-cards > ul > img {
   // list-style-type: none;
   // background: plum;
-  width: 28px;
-  height: 39.2px;
+  width: 3.6vh;
+  height: 5.04vh;
   margin: 0 2px 5px 2px;
   z-index: 1;
 }
@@ -376,8 +376,8 @@ body{
 }
 
 .opponent-card-selectors > ul > img {
-  width: 60px;
-  height: 84px;
+  width: 8vh;
+  height: 11.2vh;
   margin: 0 5px 0 0;
   z-index: 1;
   border: 2px solid $color4;
@@ -405,8 +405,8 @@ body{
 .board-cards > ul > img {
   // list-style-type: none;
   // background: plum;
-  width: 60px;
-  height: 84px;
+  width: 8vh;
+  height: 11.2vh;
   margin: 0 5px 0 0;
   border: 2px solid $color4;
   z-index: 1;
@@ -428,8 +428,8 @@ body{
 
 
 .hole-cards > ul > img {
-  width: 60px;
-  height: 84px;
+  width: 8vh;
+  height: 11.2vh;
   margin: 0 5px 0 0;
   border: 2px solid $color4;
   z-index: 1;
@@ -534,14 +534,14 @@ body{
 
 .result>p{
   margin-bottom: 5px;
-  font-size: 30px;
+  font-size: 4vh;
   font-weight: 700px;
   color: white;
 }
 
 .card-info{
-  margin-top: 10px;
-  font-size: 24px;
+  margin-top: 1vh;
+  font-size: 3vh;
   font-weight: 700;
 }
 
