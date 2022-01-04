@@ -255,7 +255,7 @@ body{
 .opponent{
   display: flex;
   flex-direction: column;
-  min-height: 200px;
+  min-height: 30vh;
 }
 
 .opponent-card-selector{
@@ -274,12 +274,12 @@ body{
 
 .range-selector{
   list-style-type: none;
-  padding: 5px;
-  margin: 5px;
+  padding: 1vh;
+  margin: 1vh;
   background: $color5;
   border: none;
   color: black;
-  font-size: 20px;
+  font-size: 3vh;
   text-align: center;
   display: flex;
   flex-direction: row;
@@ -287,8 +287,8 @@ body{
   justify-content: center;
   border-radius: 5px;
   outline: 2px solid $color4;
-  width: 30%;
-  height: 48px;
+  // width: 30%;
+  height: 6vh;
   // position: relative;
   cursor: pointer;
   // -webkit-filter: brightness(120%);
