@@ -186,6 +186,14 @@ class View {
     resultDisplay.innerHTML = 'Oops, not enough Info!';
   }
 
+  incorrectCommunityCards(){
+    let prompt = document.querySelector(".prompt-details")
+    prompt.innerHTML = "<p>Please make sure to have 0 or 3 or 4 or 5 community cards</p>";
+
+    const resultDisplay = document.querySelector(".result-display-lists")
+    resultDisplay.innerHTML = 'Oops, not enough Info!';
+  }
+
 }
 
 export default View;

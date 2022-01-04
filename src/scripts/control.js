@@ -409,6 +409,8 @@ class Control{
 
       if (hand1.length < 2) {
         this.view.noResult()
+      } else if (communityCards.length > 0 && communityCards.length < 3) {
+        this.view.incorrectCommunityCards()
       } else {
         let result = this.calculator.getResult(hand1, finalRange, communityCards, deck);
         if(result[3] === 0) {
@@ -435,7 +437,7 @@ class Control{
 
   activatePickPosPrompt() {
     let prompt1 = document.querySelector(".prompt-details")
-    prompt1.innerHTML = "<p>Add board cards or Ask Him!</p>";
+    prompt1.innerHTML = "<p>Add community cards or Ask Him!</p>";
 
     let cardList = document.querySelector(".cards-sidebar")
     cardList.classList.remove("highlight")

@@ -137,7 +137,7 @@ body{
   text-align: left;
   background: $color1;
   min-height: 200px;
-  font-size: 24px;
+  font-size: 3vh;
   display: flex;
   align-items: center;
 }
@@ -255,7 +255,7 @@ body{
 .opponent{
   display: flex;
   flex-direction: column;
-  min-height: 30vh;
+  min-height: 27vh;
 }
 
 .opponent-card-selector{
@@ -461,7 +461,7 @@ body{
 }
 
 .prompt{
-  font-size: 24px;
+  font-size: 3vh;
   text-align: left;
   // border: 1px solid blue;
   border-radius: 10px;
@@ -496,7 +496,7 @@ body{
 
 .strange-img{
   flex-basis: 100px;
-  font-size: 16px;
+  font-size: 2vh;
   color: white;
 }
 
@@ -510,7 +510,7 @@ body{
 }
 
 .result-display{
-  font-size: 24px;
+  font-size: 3vh;
   text-align: center;
   // border: 1px solid blue;
   border-radius: 10px;
@@ -672,13 +672,13 @@ body{
 .about-btn{
   margin: 0 2vh;
   cursor: pointer;
-  font-size: 2vw;
+  font-size: 3vh;
 }
 
 .about-btn-active{
   margin: 0 1vh;
   cursor: pointer;
-  font-size: 2vw;
+  font-size: 3vh;
   color: $color5;
   text-decoration: underline;
 }
@@ -760,7 +760,7 @@ body{
 }
 
 .about-details-use{
-  font-size: 5vh;
+  font-size: 3vh;
   text-align: left;
 }
 
@@ -769,10 +769,16 @@ body{
 }
 
 .about-details-use ol{
-  margin-top: 6vh;
+  margin-top: 3vh;
 }
 
 .about-details-use ol li{
+  margin: 2vh 0;
+  font-size: 3vh;
+}
+
+.about-details-use ol li ul li{
+  font-size: 2.5vh;
+  font-style: italic;
   margin: 1.5vh 0;
-  font-size: 4vh;
 }
