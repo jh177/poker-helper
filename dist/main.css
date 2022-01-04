@@ -127,7 +127,7 @@ body {
 }
 
 .main-container p {
-  font-size: 30px;
+  font-size: 4vh;
   font-weight: 500;
   color: black;
 }
@@ -207,8 +207,8 @@ body {
 }
 
 .side-cards > ul > img {
-  width: 28px;
-  height: 39.2px;
+  width: 3.6vh;
+  height: 5.04vh;
   margin: 0 2px 5px 2px;
   z-index: 1;
 }
@@ -223,7 +223,7 @@ body {
 .opponent {
   display: flex;
   flex-direction: column;
-  min-height: 200px;
+  min-height: 20vh;
 }
 
 .opponent-card-selector {
@@ -305,7 +305,7 @@ body {
 }
 
 .opponent-selectors-title {
-  font-size: 30px;
+  font-size: 4vh;
   font-weight: 500;
   margin-right: 16px;
   color: black;
@@ -338,8 +338,8 @@ body {
 }
 
 .opponent-card-selectors > ul > img {
-  width: 60px;
-  height: 84px;
+  width: 8vh;
+  height: 11.2vh;
   margin: 0 5px 0 0;
   z-index: 1;
   border: 2px solid #BF2E21;
@@ -363,8 +363,8 @@ body {
 }
 
 .board-cards > ul > img {
-  width: 60px;
-  height: 84px;
+  width: 8vh;
+  height: 11.2vh;
   margin: 0 5px 0 0;
   border: 2px solid #BF2E21;
   z-index: 1;
@@ -384,8 +384,8 @@ body {
 }
 
 .hole-cards > ul > img {
-  width: 60px;
-  height: 84px;
+  width: 8vh;
+  height: 11.2vh;
   margin: 0 5px 0 0;
   border: 2px solid #BF2E21;
   z-index: 1;
@@ -487,7 +487,7 @@ body {
 
 .card-info {
   margin-top: 10px;
-  font-size: 24px;
+  font-size: 3vh;
   font-weight: 700;
 }
 
