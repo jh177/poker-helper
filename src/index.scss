@@ -768,8 +768,15 @@ body{
   text-decoration: underline;
 }
 
+.about-details-use>div{
+  text-decoration: underline;
+  margin-bottom: 1vh;
+  font-size: 3.5vh;
+}
+
 .about-details-use ol{
-  margin-top: 3vh;
+  margin-top: 2vh;
+  margin-bottom: 0;
 }
 
 .about-details-use ol li{
