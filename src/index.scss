@@ -83,8 +83,14 @@ body{
 #angellist-logo{
   // width: 20px;
   margin-left: 10px;
+  margin-right: 10px;
+  height: 5vh;
+}
+
+#portfolio-logo{
   margin-left: 10px;
   height: 5vh;
+  border-radius: 50%;
 }
 
 .footer-logo:hover{
