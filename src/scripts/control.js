@@ -109,6 +109,7 @@ class Control{
         this.bindListEvents();
         this.removePosEvents();
         this.activatePickCardPrompt();
+        this.activateChosenCard(posId);
       }
     } else {
       if ((posId.includes("flop") && parseInt(posId[4]) !== this.boardCards.length) ||
@@ -122,6 +123,12 @@ class Control{
         return;
       }
     }
+  }
+
+  // darken the chosen position for user to keep track of which pos selected
+  activateChosenCard(posId){
+      let chosenPos = document.querySelector(`#${posId}`)
+      chosenPos.classList.add("chosen")
   }
 
   removeCardFromPos(posId){
@@ -188,7 +195,6 @@ class Control{
     card.dataset.taken = "yes";
     card.src = "assets/images/cards/RED_BACK.svg";
     this.activatePickPosPrompt();
-    
   }
 
   addCardtoPos(card){
@@ -225,7 +231,11 @@ class Control{
     pos.src = `assets/images/cards/${imgNum}.svg`;
 
     pos.dataset.fill = "filled";
-    this.updateComboNumber()
+    this.updateComboNumber();
+
+    //remove the darkening effect of the chosen position
+    let chosenPos = document.querySelector(`#${posId}`)
+    chosenPos.classList.remove("chosen")
   }
   
   // add click actions for range selector buttons
