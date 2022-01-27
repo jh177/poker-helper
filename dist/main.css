@@ -48,27 +48,27 @@ body {
 
 .footer a {
   text-align: center;
-  padding: 0 10px 0 0;
+  padding: 0 20px 0 0;
 }
 
 #linkedin-logo {
-  margin-left: 10px;
+  margin-left: 20px;
   height: 5vh;
 }
 
 #github-logo {
-  margin-left: 10px;
+  margin-left: 20px;
   height: 5vh;
 }
 
 #angellist-logo {
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
   height: 5vh;
 }
 
 #portfolio-logo {
-  margin-left: 10px;
+  margin-left: 20px;
   height: 5vh;
   border-radius: 50%;
 }
@@ -78,7 +78,7 @@ body {
 }
 
 .about {
-  padding: 0 10px 0 0;
+  padding: 0 20px 0 0;
   cursor: pointer;
   font-size: 4vh;
 }

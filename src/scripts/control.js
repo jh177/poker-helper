@@ -519,11 +519,11 @@ class Control{
     let aboutDetails1 = document.querySelector("#about-details-1")
     let aboutDetailsActive = document.querySelector(".about-details-active")
 
-    aboutBtn1.classList.add("about-btn-active");
     aboutBtnActive.classList.remove("about-btn-active");
+    aboutBtn1.classList.add("about-btn-active");
 
-    aboutDetails1.classList.add("about-details-active")
     aboutDetailsActive.classList.remove("about-details-active")
+    aboutDetails1.classList.add("about-details-active")
   }
 }
 
