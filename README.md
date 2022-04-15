@@ -1,4 +1,4 @@
-# Guardian of the Chips -- The Poker Helper
+# Wizard of Odds -- The Poker Helper
 
 [Live](https://jh177.github.io/poker-helper/)
 
