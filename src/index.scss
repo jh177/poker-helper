@@ -10,13 +10,9 @@ body{
 }
 
 .header{
-  // background: chartreuse;
-  // padding: 10px;
   margin-top: 1vh;
   margin-bottom: 1vh;
   flex: 1 100%;
-  // border-radius: 10px;
-  // height: 120px;
   display: flex;
 }
 
@@ -38,15 +34,7 @@ body{
   background: black;
 }
 
-// .wrapper>*{
-//   padding: 10px;
-//   margin: 10px;
-//   flex: 1 100%;
-//   border-radius: 10px;
-// }
-
 .wrapper *{
-  // font-family: 'Luckiest Guy', cursive;
     font-family: 'Josefin Sans', sans-serif;
 }
 
@@ -69,19 +57,16 @@ body{
 }
 
 #linkedin-logo{
-  // width: 30px;
   margin-left: 20px;
   height: 5vh;
 }
 
 #github-logo{
-  // width: 30px;
   margin-left: 20px;
   height: 5vh;
 }
 
 #angellist-logo{
-  // width: 20px;
   margin-left: 20px;
   margin-right: 20px;
   height: 5vh;
@@ -98,7 +83,6 @@ body{
 }
 
 .about{
-  // position: relative;
   padding: 0 20px 0 0;
   cursor: pointer;
   font-size: 4vh;
@@ -117,7 +101,6 @@ body{
   background: $color3;
   display: flex;
   flex-direction: column;
-  // flex-wrap: wrap;
   justify-content: center;
   min-width: 240px;
 }
@@ -126,11 +109,8 @@ body{
   background: green;
   display: flex;
   flex-direction: column;
-  // flex-wrap: wrap;
   justify-content: center;
   min-width: 240px;
-  // font-size: 24px;
-  // font-weight: 900;
   color: white;
 }
 
@@ -160,8 +140,7 @@ body{
 .main-container p{
   font-size: 4vh;
   font-weight: 500;
-  // color: white
-  color: black
+  color: black;
 }
 
 .result{
@@ -243,8 +222,6 @@ body{
 }
 
 .side-cards > ul > img {
-  // list-style-type: none;
-  // background: plum;
   width: 3.6vh;
   height: 5.04vh;
   margin: 0 2px 5px 2px;
@@ -293,16 +270,12 @@ body{
   justify-content: center;
   border-radius: 5px;
   outline: 2px solid $color4;
-  // width: 30%;
   height: 6vh;
-  // position: relative;
   cursor: pointer;
-  // -webkit-filter: brightness(120%);
 }
 
 .range-selector:hover{
   -webkit-filter: brightness(120%);
-  // transform: scale(1.1);
 }
 
 .range-selector-prompt{
@@ -373,7 +346,6 @@ body{
 
 .select-range-btn:hover,.select-card-btn:hover{
   -webkit-filter: brightness(120%);
-  // transform: scale(1.1);
 }
 
 .opponent-range-info{
@@ -390,13 +362,11 @@ body{
 }
 
 .opponent-card-selectors > ul > img:hover {
-  // background: purple;
   cursor: pointer;
   -webkit-filter: brightness(120%);
 }
 
 .range-selector.selected{
-  // color: darken($color: #000000, $amount: 20%);
   background: darken($color: chocolate, $amount: 20%);
 }
 
@@ -409,8 +379,6 @@ body{
 }
 
 .board-cards > ul > img {
-  // list-style-type: none;
-  // background: plum;
   width: 8vh;
   height: 11.2vh;
   margin: 0 5px 0 0;
@@ -419,7 +387,6 @@ body{
 }
 
 .board-cards > ul > img:hover {
-  // background: purple;
   cursor: pointer;
   -webkit-filter: brightness(120%);
 }
@@ -442,7 +409,6 @@ body{
 }
 
 .hole-cards > ul > img:hover {
-  // background: purple;
   cursor: pointer;
   -webkit-filter: brightness(120%);
 }
@@ -450,10 +416,6 @@ body{
 .chosen{
   -webkit-filter: brightness(50%);
 }
-
-
-
-
 
 .spinner-hidden{
   width: 40px;
@@ -473,7 +435,6 @@ body{
 .prompt{
   font-size: 3vh;
   text-align: left;
-  // border: 1px solid blue;
   border-radius: 10px;
   background: lightcyan;
   flex-basis: 150px;
@@ -485,7 +446,6 @@ body{
 .prompt-details{
   margin: auto;
   width: 90%;
-  // padding: 0 2px;
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 600;
 }
@@ -522,7 +482,6 @@ body{
 .result-display{
   font-size: 3vh;
   text-align: center;
-  // border: 1px solid blue;
   border-radius: 10px;
   background: lightcyan;
   flex-basis: 100px;
@@ -534,7 +493,6 @@ body{
 }
 
 .result-display-lists{
-  // padding: 0 2px;
   width: 90%;
 }
 
@@ -555,11 +513,6 @@ body{
   font-weight: 700;
 }
 
-// .card-info-prompt{
-//   font-size: larger;
-//   font-weight: bolder;
-// }
-
 .result button{
   color:black;
   height: 6vh;
@@ -571,7 +524,6 @@ body{
   border: none;
   margin: auto;
   font-size: 3vh;
-  // width: 67%;
   font-weight: 700px;
 }
 
@@ -582,12 +534,8 @@ body{
 }
 
 #simulation:hover{
-  // color: black;
-  // border: 2px solid plum;
-  // background: white;
   cursor: pointer;
   -webkit-filter: brightness(120%);
-  // transform: scale(1.5);
 }
 
 #reset-button{
